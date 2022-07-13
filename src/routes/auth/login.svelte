@@ -1,8 +1,8 @@
 <script>
-	import { register, getNonce, connect, login } from '$lib/stores/modules/auth';
+	import { registerCustomer, connect, loginUser } from '$lib/stores/modules/auth';
 	import { onMount } from 'svelte';
 	const signIgn = async () => {
-		login();
+		loginUser();
 	};
 
 	const handleLogin = (e) => {
@@ -12,12 +12,14 @@
 			const [key, value] = field;
 			data[key] = value;
 		}
-		console.log(data);
+		const { email, entityName } = data;
+		registerCustomer(email, entityName);
 	};
 
 	onMount(() => {
 		connect();
 	});
+	
 </script>
 
 <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -42,9 +44,9 @@
 			<input type="hidden" name="remember" value="true" />
 			<div class="rounded-md shadow-sm -space-y-px">
 				<div>
-					<label for="email-address" class="sr-only">Email address</label>
+					<label for="emailAddress" class="sr-only">Email address</label>
 					<input
-						id="email-address"
+						id="emailAddress"
 						name="email"
 						type="email"
 						autocomplete="email"
@@ -54,10 +56,10 @@
 					/>
 				</div>
 				<div>
-					<label for="entity-name" class="sr-only">Entity Name</label>
+					<label for="entityName" class="sr-only">Entity Name</label>
 					<input
-						id="entity-name"
-						name="entity-name"
+						id="entityName"
+						name="entityName"
 						type="text"
 						required
 						class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
