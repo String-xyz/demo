@@ -25,8 +25,8 @@ export const getQuote = async (item: NFT): Promise<Quote> => {
 };
 
 export const transact = async (item: NFT, token: string, quote: Quote): Promise<any> => {
-	const data = JSON.stringify({ ...process(item), cardToken: token, quote: quote.data });
-	return await post('transact', data);
+	const data = { ...process(item), cardToken: token, quote: quote.data };
+	return await post('transact', JSON.stringify(data));
 };
 
 const process = (item: NFT): object => {
