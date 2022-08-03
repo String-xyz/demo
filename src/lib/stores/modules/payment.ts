@@ -2,7 +2,6 @@ import { currentUser } from '$lib/stores/modules/auth';
 import { post } from '$lib/services/api';
 import { get as getStore } from 'svelte/store';
 import type { NFT } from './nfts';
-import { parseEther } from 'ethers/lib/utils';
 
 export interface Quote {
 	success: boolean;
@@ -40,7 +39,7 @@ const process = (item: NFT): object => {
 		contractABI: ['function mintTo(address recipient) payable returns (uint256)'],
 		contractFunction: 'mintTo',
 		contractParameters: [userAddress],
-		txValue: parseEther(item.price.toString()).toString(),
+		txValue: (item.price * 1e18).toString(),
 		gasLimit: '8000000'
 	};
 	return data;
