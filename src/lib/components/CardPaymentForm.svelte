@@ -32,6 +32,7 @@
 	
 	onMount(async () => {
 		if (!CHECKOUT_PK) return;
+		// @ts-ignore
 		checkout = window.Frames;
 		checkout.init({
 			publicKey: CHECKOUT_PK,
@@ -67,9 +68,9 @@
 			.catch((e) => {
 				console.error(e);
 			});
-
+			
 		txSuccess = result?.success ?? false;
-		txID = result?.data ?? '#';
+		txID = result?.data?.txID ?? '#';
 		showSpinner = false;
 	};
 
