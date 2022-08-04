@@ -1,9 +1,10 @@
 <script context="module" lang="ts">
-	import {nfts} from '$lib/stores'	
+	import { nfts } from '$lib/stores';
 </script>
 
 <script lang="ts">
 </script>
+
 <svelte:head>
 	<script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
 </svelte:head>
@@ -31,9 +32,8 @@
 									{product.name}
 								</a>
 							</h3>
-							<p class="mt-1 text-sm text-gray-500">{product.color}</p>
 						</div>
-						<p class="text-sm font-medium text-gray-900">{product.price}</p>
+						<p class="text-sm font-medium text-gray-900">{product.price} {product.currency || "AVAX"}</p>
 					</div>
 				</div>
 			{/each}

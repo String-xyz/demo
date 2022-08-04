@@ -66,17 +66,17 @@ export const loginUser = async () => {
 
 	if (!user?.nonce) {
 		const chain = getStore(chainStore);
-		const {nonce} = await getNonce(chain.account);
+		const { nonce } = await getNonce(chain.account);
 	}
-	
+
 	try {
 		const signature = await sign.signMessage(`sign this message: ${nonce}`);
 		const result = await post('auth/login', { address: chain.account, signature: signature });
 		const { data } = result;
 		const token = data as AuthToken;
 		currentToken.set(token.AuthToken.token);
-		
-    return token;
+
+		return token;
 	} catch (e) {
 		console.log(e);
 	}
@@ -96,12 +96,12 @@ export const loginCustomer = async () => {
 	}
 };
 
-export const signPayload = async (payload:string): Promise<string>  => { 
+export const signPayload = async (payload: string): Promise<string> => {
 	const sign = getStore(signer);
 	try {
 		const signature = await sign.signMessage(payload);
-		return signature
+		return signature;
 	} catch (e) {
-		throw e
+		throw e;
 	}
-}
+};
