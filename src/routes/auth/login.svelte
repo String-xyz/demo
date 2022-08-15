@@ -1,5 +1,6 @@
 <script>
-	import { registerCustomer, connect, loginUser } from '$lib/stores/modules/auth';
+	import { registerCustomer, loginUser } from '$lib/stores/modules/auth';
+	import { connect} from '$lib/stores'
 	import { onMount } from 'svelte';
 	const signIgn = async () => {
 		loginUser();
