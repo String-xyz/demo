@@ -9,7 +9,6 @@ export const curerntSigner: Writable<any> = writable(null);
 export const connect = () => {
     useWeb3Provider(window.ethereum);
     chainStore.subscribe((store: any) => {
-        console.log(store)
         currentAccount.set(store.account);
         currentChainID.set(store.chainId);
         curerntSigner.set(store.signer);

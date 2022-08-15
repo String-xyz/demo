@@ -1,9 +1,8 @@
 <script>
-	import { registerCustomer, loginUser } from '$lib/stores/modules/auth';
-	import { connect} from '$lib/stores'
-	import { onMount } from 'svelte';
-	const signIgn = async () => {
-		loginUser();
+	import { registerCustomer } from '$lib/stores/modules/auth';
+	import { connect, currentChainID, curerntSigner, currentAccount} from '$lib/stores'
+	const connetWallet = async () => {
+		connect();
 	};
 
 	const handleLogin = (e) => {
@@ -16,10 +15,6 @@
 		const { email, entityName } = data;
 		registerCustomer(email, entityName);
 	};
-
-	onMount(() => {
-		connect();
-	});
 	
 </script>
 
@@ -32,11 +27,11 @@
 				alt="Workflow"
 			/>
 			<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-				Sign in to your account
+				{`${$currentAccount || "Sign in to your account" } `}
 			</h2>
 			<p class="mt-2 text-center text-sm text-gray-600">
 				Or
-				<a href="#" class="font-medium text-indigo-600 hover:text-indigo-500" on:click={signIgn}>
+				<a href="#" class="font-medium text-indigo-600 hover:text-indigo-500" on:click={connetWallet}>
 					sign in with metamask</a
 				>
 			</p>
