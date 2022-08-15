@@ -1,3 +1,1 @@
-<main>
-    healthy
-</main>
+<main>healthy</main>

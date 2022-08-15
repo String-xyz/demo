@@ -33,7 +33,10 @@
 								</a>
 							</h3>
 						</div>
-						<p class="text-sm font-medium text-gray-900">{product.price} {product.currency || "AVAX"}</p>
+						<p class="text-sm font-medium text-gray-900">
+							{product.price}
+							{product.currency || 'AVAX'}
+						</p>
 					</div>
 				</div>
 			{/each}
