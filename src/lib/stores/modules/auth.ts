@@ -10,7 +10,7 @@ interface User {
 	created?: number;
 }
 
-const { useWeb3Provider, chainStore, signer } = createChainStore();
+const { chainStore, signer } = createChainStore();
 const clientId = import.meta.env.VITE_CLIENT_ID;
 const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
 
@@ -26,10 +26,6 @@ interface AuthToken {
 
 export const currentUser: Writable<User | undefined> = writable(undefined);
 export const currentToken: Writable<string> = writable('');
-
-export const connect = () => {
-	useWeb3Provider(window.ethereum);
-};
 
 export const registerUser = async () => {
 	const chain = getStore(chainStore);

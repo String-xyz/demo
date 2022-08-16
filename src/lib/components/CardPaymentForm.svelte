@@ -29,7 +29,7 @@
 	let txSuccess: boolean;
 	let priceInterval: any;
 	let quote: Quote;
-	
+
 	onMount(async () => {
 		if (!CHECKOUT_PK) return;
 		// @ts-ignore
@@ -55,7 +55,7 @@
 
 	const validateInfo = () => {
 		isPaymentInfoValid = checkout.isCardValid() && quote?.data !== undefined;
-		
+
 		// If we wanted to validate any other information we do it here
 	};
 
@@ -68,7 +68,7 @@
 			.catch((e) => {
 				console.error(e);
 			});
-			
+
 		txSuccess = result?.success ?? false;
 		txID = result?.data?.txID ?? '#';
 		showSpinner = false;
@@ -95,21 +95,25 @@
 		{/if}
 		<form id="billingForm" on:submit|preventDefault={doCardTransaction}>
 			<div class="card-frame" />
-			
+
 			<label for="name">Name on Card:</label>
-			<input type="text" id="name" bind:value={billingDetails.name} required>
+			<input type="text" id="name" bind:value={billingDetails.name} required />
 			<label for="addressLine1">Address:</label>
-			<input type="text" id="addressLine1" bind:value={billingDetails.billingAddress.addressLine1}>
+			<input
+				type="text"
+				id="addressLine1"
+				bind:value={billingDetails.billingAddress.addressLine1}
+			/>
 			<label for="zip">Zip Code:</label>
-			<input type="text" id="zip" bind:value={billingDetails.billingAddress.zip}>
+			<input type="text" id="zip" bind:value={billingDetails.billingAddress.zip} />
 			<label for="city">City:</label>
-			<input type="text" id="city" bind:value={billingDetails.billingAddress.city}>
+			<input type="text" id="city" bind:value={billingDetails.billingAddress.city} />
 			<label for="state">State:</label>
-			<input type="text" id="state" bind:value={billingDetails.billingAddress.state}>
+			<input type="text" id="state" bind:value={billingDetails.billingAddress.state} />
 			<button id="submit" disabled={!isPaymentInfoValid}>Purchase</button>
 		</form>
 		{#if showSpinner}
-		<div class="spinner" />
+			<div class="spinner" />
 		{/if}
 	</div>
 {:else}
@@ -144,7 +148,8 @@
 		margin: 0 auto;
 	}
 
-	label, input {
+	label,
+	input {
 		display: block;
 	}
 
@@ -166,12 +171,20 @@
 	}
 
 	@-webkit-keyframes spin {
-		0% { -webkit-transform: rotate(0deg); }
-		100% { -webkit-transform: rotate(360deg); }
+		0% {
+			-webkit-transform: rotate(0deg);
+		}
+		100% {
+			-webkit-transform: rotate(360deg);
+		}
 	}
 
 	@keyframes spin {
-		0% { transform: rotate(0deg); }
-		100% { transform: rotate(360deg); }
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
 	}
 </style>
