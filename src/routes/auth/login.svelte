@@ -2,7 +2,7 @@
 	import { registerCustomer } from '$lib/stores/modules/auth';
 	import { connect, currentAccount } from '$lib/stores';
 
-	const connetWallet = async () => {
+	const connectWallet = async () => {
 		connect();
 	};
 
@@ -34,7 +34,7 @@
 				<a
 					href="#"
 					class="font-medium text-indigo-600 hover:text-indigo-500"
-					on:click={connetWallet}
+					on:click={connectWallet}
 				>
 					Connect Wallet</a
 				>

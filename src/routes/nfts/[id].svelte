@@ -8,41 +8,23 @@
 </script>
 
 <script lang="ts">
-	import BuyModal from '$lib/components/BuyModal.svelte';
-	import { byId } from '$lib/stores';
-	import { get } from '$lib/services/api';
-
-	export let id: string;
+	import { byId, connect } from '$lib/stores';
+  import CheckoutOption from '$lib/components/modals/checkout/CheckoutOption.svelte';
+  import { ModalManager, ModalProps } from '$lib/stores/';
+	
+  export let id: string;
 	$: item = byId(Number(id));
 
-	let showModal = false;
-	let isCardTransaction = false;
+	const showCheckoutOption = () => {
+    connect();
 
-	const checkPermittedRegion = async () => {
-		const result = await get('healthcheck');
-		return result?.status === 'ok' && result != 401;
+    ModalManager.set(CheckoutOption);
+    ModalProps.set({item});
 	};
 
-	const toggleModal = () => {
-		showModal = !showModal;
-	};
-
-	const useCrypto = () => {
-		isCardTransaction = false;
-		toggleModal();
-	};
-
-	const useCard = () => {
-		isCardTransaction = true;
-		toggleModal();
-	};
 </script>
 
-<svelte:head>
-	<script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
-</svelte:head>
-
-<BuyModal {showModal} {isCardTransaction} {item} on:click={toggleModal} />
+<svelte:component this={$ModalManager} {...$ModalProps} />
 <section class="text-gray-700 body-font overflow-hidden bg-white">
 	<div class="container px-5 py-24 mx-auto">
 		<div class="lg:w-4/5 mx-auto flex flex-wrap">
@@ -234,20 +216,10 @@
 						</svg>
 					</button>
 					<div class="h-auto w-80 bg-white p-3 rounded-lg">
-						<button
-							class="outline-none h-12 bg-orange-600 text-white mb-2 hover:bg-orange-700 rounded-lg w-1/2 cursor-pointer inline"
-							on:click={useCrypto}>Buy w/ Crypto</button
-						>
-						{#await checkPermittedRegion() then permitted}
-							{#if permitted}
-								<button
-									class="outline-none h-12 bg-blue-600 text-white mb-2 hover:bg-blue-700 rounded-lg w-1/2 cursor-pointer inline"
-									on:click={useCard}>Buy w/ Card</button
-								>
-							{/if}
-						{:catch error}
-							{console.log(error)}
-						{/await}
+            <button
+            class="outline-none h-12 bg-blue-600 text-white mb-2 hover:bg-blue-700 rounded-lg w-1/2 cursor-pointer inline"
+              on:click={showCheckoutOption}>Buy Now</button
+            >
 					</div>
 				</div>
 			</div>
