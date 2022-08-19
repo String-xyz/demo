@@ -1,4 +1,8 @@
-@import '@fontsource/fira-mono';
+@import '@fontsource/lato';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	font-family: "Lato";
+}
