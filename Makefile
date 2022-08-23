@@ -2,7 +2,7 @@ include .env
 
 export
 AWS_DEFAULT_PROFILE=${env}-string
-APP=app
+APP=demo
 DEMO_APP=demo-app
 ECS_CLUSTER=web-app
 SERVICE_TAG=${tag}
