@@ -27,7 +27,7 @@ export interface TransactPayload {
 		type: number;
 		quote: Quote;
 		cardToken: string;
-	}
+	};
 }
 
 export interface Card {

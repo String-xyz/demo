@@ -9,19 +9,18 @@
 
 <script lang="ts">
 	import { byId, connect } from '$lib/stores';
-  import CheckoutOption from '$lib/components/modals/checkout/CheckoutOption.svelte';
-  import { ModalManager, ModalProps } from '$lib/stores/';
-	
-  export let id: string;
+	import CheckoutOption from '$lib/components/modals/checkout/CheckoutOption.svelte';
+	import { ModalManager, ModalProps } from '$lib/stores/';
+
+	export let id: string;
 	$: item = byId(Number(id));
 
 	const showCheckoutOption = () => {
-    connect();
+		connect();
 
-    ModalManager.set(CheckoutOption);
-    ModalProps.set({item});
+		ModalManager.set(CheckoutOption);
+		ModalProps.set({ item });
 	};
-
 </script>
 
 <svelte:component this={$ModalManager} {...$ModalProps} />
@@ -216,10 +215,10 @@
 						</svg>
 					</button>
 					<div class="h-auto w-80 bg-white p-3 rounded-lg">
-            <button
-            class="outline-none h-12 bg-blue-600 text-white mb-2 hover:bg-blue-700 rounded-lg w-1/2 cursor-pointer inline"
-              on:click={showCheckoutOption}>Buy Now</button
-            >
+						<button
+							class="outline-none h-12 bg-blue-600 text-white mb-2 hover:bg-blue-700 rounded-lg w-1/2 cursor-pointer inline"
+							on:click={showCheckoutOption}>Buy Now</button
+						>
 					</div>
 				</div>
 			</div>

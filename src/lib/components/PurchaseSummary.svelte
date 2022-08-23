@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { quote, refreshQuote, finalQuote, currentAccount, type NFT } from '$lib/stores'
+	import { quote, refreshQuote, finalQuote, currentAccount, type NFT } from '$lib/stores';
 	import { onMount, onDestroy } from 'svelte';
 	import CountdownBar from './CountdownBar.svelte';
 
@@ -14,12 +14,10 @@
 
 	onDestroy(() => {
 		clearInterval(quoteInterval);
-	})
+	});
 
 	$: quoted = $quote?.data?.quote;
-
 </script>
-
 
 {#if final}
 	<span>Purchase summary</span>
@@ -32,8 +30,11 @@
 {:else}
 	<div class="flex justify-between">
 		<span class="whitespace-nowrap">Purchase summary</span>
-		<div class="tooltip tooltip-primary" data-tip="Your quote updates every 10 seconds before you purchase">
-			<img src="/images/question_icon.svg" alt="question"/>
+		<div
+			class="tooltip tooltip-primary"
+			data-tip="Your quote updates every 10 seconds before you purchase"
+		>
+			<img src="/images/question_icon.svg" alt="question" />
 		</div>
 		<CountdownBar />
 	</div>

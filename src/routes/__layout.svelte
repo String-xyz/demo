@@ -1,60 +1,46 @@
 <script lang="ts">
 	import '../app.css';
+	import { connect, disconnect, currentAccount } from '$lib/stores';
+	import { append } from 'svelte/internal';
+
+	function onConnect() {
+		connect();
+	}
+
+	function onDisconect() {
+		disconnect();
+	}
 </script>
 
-<main>
-	<div>
-		<div class="relative pt-6 px-4 sm:px-6 lg:px-8">
-			<nav
-				class="relative flex items-center justify-between sm:h-10 lg:justify-start"
-				aria-label="Global"
-			>
-				<div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-					<div class="flex items-center justify-between w-full md:w-auto">
-						<a href="/">
-							<span class="sr-only">home</span>
-							<img
-								alt="Workflow"
-								class="h-8 w-auto sm:h-10"
-								src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-							/>
-						</a>
-						<div class="-mr-2 flex items-center md:hidden">
-							<button
-								type="button"
-								class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-								aria-expanded="false"
-							>
-								<span class="sr-only">Open main menu</span>
-								<!-- Heroicon name: outline/menu -->
-								<svg
-									class="h-6 w-6"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke-width="2"
-									stroke="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M4 6h16M4 12h16M4 18h16"
-									/>
-								</svg>
-							</button>
-						</div>
-					</div>
+<div class="mx-auto h-screen">
+	<div class="flex flex-col drawer-content">
+		<div class="w-full navbar bg-white text-dark-content  border-base-300">
+			<div class="flex-1 px-2 mx-2">
+				<a class="btn btn-ghost btn-lg rounded-btn text-primary" href="/"> STRING</a>
+			</div>
+
+			<div class="flex-none hidden px-2 mx-2 lg:flex">
+				<div class="flex items-stretch">
+					<a class="btn btn-ghost btn-sm rounded-btn" href="/"> Explore </a>
+					<a class="btn btn-ghost btn-sm rounded-btn" href="#"> Stats </a>
+					<a class="btn btn-ghost btn-sm rounded-btn" href="#"> Resources </a>
+					<a class="btn btn-ghost btn-sm rounded-btn" href="#"> Create </a>
+					{#if $currentAccount}
+						<button class="btn btn-outline btn-sm rounded-btn btn-secondary" on:click={onDisconect}>
+							{$currentAccount.substring(0, 10) + '...'}
+						</button>
+					{:else}
+						<button class="btn btn-outline btn-sm rounded-btn btn-primary" on:click={onConnect}>
+							Connect Wallet
+						</button>
+					{/if}
 				</div>
-				<div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-					<a href="/" class="font-medium text-gray-500 hover:text-gray-900">Marketplace</a>
-					<a href="/auth/login" class="font-medium text-indigo-600 hover:text-indigo-500">Log in</a>
-				</div>
-			</nav>
+			</div>
 		</div>
+		<div class="divider" />
+		<slot />
 	</div>
-	<slot />
-</main>
+</div>
 
 <style>
 </style>
