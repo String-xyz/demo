@@ -76,14 +76,13 @@
 			</div>
 		</div>
 		<div class="mt-10 text-center">
-			<button class="btn btn-outline btn-primary rounded border-2 normal-case" on:click={back}
-				>Back</button
-			>
+			<button class="btn btn-outline btn-primary rounded border-2 normal-case" on:click={back}>Back</button>
 			<button
 				class="btn btn-primary rounded border-2 normal-case "
 				disabled={!isPaymentInfoValid}
-				type="submit">Continue</button
-			>
+				type="submit">
+				Continue
+			</button>
 		</div>
 	</form>
 </ModalBase>

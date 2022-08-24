@@ -34,7 +34,7 @@
 			class="tooltip tooltip-primary"
 			data-tip="Your quote updates every 10 seconds before you purchase"
 		>
-			<img src="/images/question_icon.svg" alt="question" />
+			<img src="/assets/question_icon.svg" alt="question" />
 		</div>
 		<CountdownBar />
 	</div>

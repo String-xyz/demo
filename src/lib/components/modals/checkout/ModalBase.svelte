@@ -12,7 +12,7 @@
 	<div id="modal">
 		<header class="flex justify-between mt-7">
 			<span class="title">{title}</span>
-			<button on:click={close}><img src="/images/closebtn.svg" alt="Close" /></button>
+			<button on:click={close}><img src="/assets/closebtn.svg" alt="Close" /></button>
 		</header>
 		<div class="content">
 			<slot />

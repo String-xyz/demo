@@ -28,11 +28,7 @@
 	<div class="divider" />
 	<PurchaseSummary {item} />
 	<div class="text-center">
-		<button on:click={back} class="btn btn-outline btn-primary rounded border-2 normal-case"
-			>Back</button
-		>
-		<button on:click={purchase} class="btn btn-primary rounded border-2 normal-case " {disabled}
-			>Purchase</button
-		>
+		<button on:click={back} class="btn btn-outline btn-primary rounded border-2 normal-case ">Back</button>
+		<button on:click={purchase} class="btn btn-primary rounded border-2 normal-case " {disabled}>Purchase</button>
 	</div>
 </ModalBase>

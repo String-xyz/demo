@@ -22,16 +22,15 @@
 		<select
 			bind:value={selected}
 			on:change={selectCard}
-			class="select select-bordered border-2 w-full mt-1"
+			class="select select-bordered border-2 w-full mt-1 "
 		>
 			<option selected>{$card.scheme} {$card.last4}</option>
 			<option value="addCard">Use other card</option>
 		</select>
 	</div>
 {:else}
-	<div class="flex justify-between mt-4	">
-		<span>Card number</span><span class="link link-primary" on:click={showCardDetails}
-			>Add Card</span
-		>
+	<div class="flex justify-between mt-4 ">
+		<span>Card number</span>
+		<span class="link link-primary" on:click={showCardDetails}>Add Card</span>
 	</div>
 {/if}
