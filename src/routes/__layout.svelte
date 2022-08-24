@@ -32,6 +32,7 @@
 				</div>
 			</div>
 		</div>
+    
 		<div class="divider mt-0" />
 		<slot />
 	</div>
