@@ -19,6 +19,7 @@ test-envvars:
 	@[ "${tag}" ] || ( echo "env tag is not set"; exit 1 )
 
 build: test-envvars
+	yarn run build
 	docker build --platform linux/amd64 -t $(ECS_APP_REPO):${SERVICE_TAG} .
 
 push: test-envvars
