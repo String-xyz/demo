@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+	import Price from '$lib/components/Price.svelte';
 	import { nfts } from '$lib/stores';
 </script>
 
@@ -6,7 +7,7 @@
 	<h2 class="text-4xl font-extrabold pb-10">Explore the best NFTs</h2>
 	<div class="grid grid-cols-4 gap-2 pb-10">
 		<div class="span-1">
-			<p>String Techologies. the world's first and largest NFT marketplace</p>
+			<p>String Technologies. The world's first and largest NFT marketplace</p>
 		</div>
 	</div>
 
@@ -24,33 +25,34 @@
 				<option>High to Low</option>
 				<option>Low to High</option>
 			</select>
-			<div class="span-1 flex items-center">
-				<input type="checkbox" class="checkbox" />
-				<span class="label-text m-3"> Buy Now</span>
-				<input type="checkbox" class="checkbox" />
-				<span class="label-text m-3"> Buy with Card</span>
-			</div>
 		</div>
 	</div>
 
 	<div class="grid gap-3 grid-cols-4 row-auto-flow">
-		{#each nfts as product}
+		{#each nfts as item}
 			<div class="card bg-base-100 shadow-xl">
-				<figure><img src={product.imageSrc} alt={product.imageAlt} /></figure>
+				<figure><img class="item" src={item.imageSrc} alt={item.imageAlt} /></figure>
 				<div class="card-body">
-					<h2 class="card-title text-primary">
-						<a href={`nfts/${product.id}`}>
+					<p class="text-sm font-medium text-primary">{item.collection}</p>
+					<h2 class="card-title">
+						<a href={`nfts/${item.id}`}>
 							<span aria-hidden="true" class="absolute inset-0" />
-							{product.name}
+							{item.name}
 						</a>
 					</h2>
-					<p class="text-sm font-medium text-gray-900">Collection Name</p>
-					<p class="text-sm font-medium text-gray-900">
-						{product.price}
-						{product.currency || 'AVAX'}
+					<p class="text-sm font-medium text-gray-900 mt-4">
+						<Price {item} />
 					</p>
 				</div>
 			</div>
 		{/each}
 	</div>
 </div>
+
+<style>
+	.item {
+		max-width: 200px;
+		max-height: 200px;
+	}
+
+</style>

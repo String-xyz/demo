@@ -15,15 +15,11 @@
 	<div class="flex flex-col drawer-content">
 		<div class="w-full navbar bg-white text-dark-content  border-base-300">
 			<div class="flex-1 px-2 mx-2">
-				<a class="btn btn-ghost btn-lg rounded-btn text-primary" href="/"> STRING</a>
+				<a class="btn btn-ghost btn-lg rounded-btn text-primary" href="/"><img src="/assets/string.svg" alt="String" width="50px" height="50px"></a>
 			</div>
 
 			<div class="flex-none hidden px-2 mx-2 lg:flex">
 				<div class="flex items-stretch">
-					<a class="btn btn-ghost btn-sm rounded-btn" href="/"> Explore </a>
-					<a class="btn btn-ghost btn-sm rounded-btn" href="#"> Stats </a>
-					<a class="btn btn-ghost btn-sm rounded-btn" href="#"> Resources </a>
-					<a class="btn btn-ghost btn-sm rounded-btn" href="#"> Create </a>
 					{#if $currentAccount}
 						<button class="btn btn-outline btn-sm rounded-btn btn-secondary" on:click={onDisconect}>
 							{$currentAccount.substring(0, 10) + '...'}
@@ -36,7 +32,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="divider" />
+    
+		<div class="divider mt-0" />
 		<slot />
 	</div>
 </div>

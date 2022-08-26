@@ -1,21 +1,21 @@
 <script lang="ts">
-	import { ModalManager } from "$lib/stores";
+	import { ModalManager } from '$lib/stores';
 
 	export let title: string;
 
 	const close = () => {
 		ModalManager.set(null);
-	}
+	};
 </script>
 
 <div class="backdrop">
 	<div id="modal">
 		<header class="flex justify-between mt-7">
 			<span class="title">{title}</span>
-			<button on:click={close}><img src="/images/closebtn.svg" alt="Close"/></button>
+			<button on:click={close}><img src="/assets/closebtn.svg" alt="Close" /></button>
 		</header>
 		<div class="content">
-			<slot></slot>
+			<slot />
 		</div>
 		<footer class="footer footer-center mb-6 mt-4 select-none text-xs">
 			<div>
@@ -26,7 +26,8 @@
 </div>
 
 <style>
-	:global(.divider:before), :global(.divider:after) {
+	:global(.divider:before),
+	:global(.divider:after) {
 		height: 1px !important;
 	}
 	.title {

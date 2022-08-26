@@ -1,10 +1,18 @@
 <script lang="ts">
 	import ModalBase from './ModalBase.svelte';
-	import { card, finalQuote, transact, ModalManager, ModalProps, type Card, type NFT } from '$lib/stores';
+	import {
+		card,
+		finalQuote,
+		transact,
+		ModalManager,
+		ModalProps,
+		type Card,
+		type NFT
+	} from '$lib/stores';
 	import { onMount } from 'svelte';
 
 	import NFTDetails from '$lib/components/NFTDetails.svelte';
-	import Spinner from '$lib/components/Spinner.svelte'
+	import Spinner from '$lib/components/Spinner.svelte';
 	import PurchaseSuccess from './PurchaseSuccess.svelte';
 	import PurchaseFail from './PurchaseFail.svelte';
 
@@ -13,19 +21,22 @@
 	onMount(async () => {
 		let result: any;
 		await transact(item, $card.token, $finalQuote)
-			.then(tx => {
+			.then((tx) => {
 				result = tx;
 			})
-			.catch(e => {
+			.catch((e) => {
 				console.error(e);
 			});
-		
-		const txSuccess = result?.success ?? false
+
+		const txSuccess = result?.success ?? false;
 		const txID = result?.data?.txID ?? '#';
 
-		if (txSuccess) ModalProps.update(props => {return {...props, txID}});	
+		if (txSuccess)
+			ModalProps.update((props) => {
+				return { ...props, txID };
+			});
 		card.set(<Card>{});
-		ModalManager.set(txSuccess ? PurchaseSuccess : PurchaseFail)
+		ModalManager.set(txSuccess ? PurchaseSuccess : PurchaseFail);
 	});
 </script>
 
