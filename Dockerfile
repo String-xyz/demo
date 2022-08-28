@@ -1,10 +1,10 @@
 FROM node:17.0 as build
 
 # install dependencies
-COPY package.json yarn.lock .
-COPY vite.config.js .
+COPY package.json yarn.lock ./
+COPY vite.config.js ./
 # Copy all local files into the image.
-COPY . .
+COPY . ./
 RUN yarn
 RUN npm run build
 ###
