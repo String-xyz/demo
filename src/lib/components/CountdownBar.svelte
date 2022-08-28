@@ -5,9 +5,8 @@
 			value = 100;
 			return;
 		}
-		value -= .1;
+		value -= 0.1;
 	}, 10);
-
 </script>
 
-<progress class="progress progress-primary w-56 block mt-3 mb-4" {value} max="100"></progress>
+<progress class="progress progress-primary w-56 block mt-3 mb-4" {value} max="100" />

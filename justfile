@@ -14,7 +14,7 @@ all TAG="latest": (build TAG) (push TAG) deploy
 all-demo TAG="latest": (build-demo TAG) (push-demo TAG) deploy-demo
 
 build TAG:
-    docker build -t {{ECS_APP_REPO}}:{{TAG}} .
+	docker build -t {{ECS_APP_REPO}}:{{TAG}} .
 
 push TAG:
 	aws ecr get-login-password --region {{AWS_REGION}} | docker login --username AWS --password-stdin {{ECS_APP_REPO}}

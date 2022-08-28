@@ -1,6 +1,6 @@
-import { writable, type Writable } from "svelte/store";
-import type { NFT } from "./nfts";
-import { getQuote, type TransactPayload } from "./payment";
+import { writable, type Writable } from 'svelte/store';
+import type { NFT } from './nfts';
+import { getQuote, type TransactPayload } from './payment';
 
 export const finalQuote: Writable<TransactPayload> = writable();
 export const quote: Writable<TransactPayload> = writable();
@@ -18,4 +18,4 @@ export const refreshQuote = async (item: NFT, userAddr: string) => {
 
 	const interval = setInterval(refreshQuote, 10000);
 	return interval;
-}
+};
