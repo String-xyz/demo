@@ -28,6 +28,7 @@ jobs:
           envkey_VITE_PUBLIC_BASE_PATH: ${{ secrets.DEMO_PUBLIC_BASE_PATH }}
           envkey_VITE_CHECKOUT_PUBLIC_KEY: ${{ secrets.DEMO_CHECKOUT_PUBLIC_KEY }}
           filename: .env
+          directory: ./
 
       - name: install deps
         run: |
