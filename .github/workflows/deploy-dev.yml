@@ -27,7 +27,7 @@ jobs:
         with:
           envkey_VITE_PUBLIC_BASE_PATH: ${{ secrets.DEV_PUBLIC_BASE_PATH  }}
           envkey_VITE_CHECKOUT_PUBLIC_KEY: ${{ secrets.DEV_CHECKOUT_PUBLIC_KEY }}
-          envkey_VITE_IPFS_GATEWAY: ${{ IPFS_GATEWAY }}
+          envkey_VITE_IPFS_GATEWAY: ${{ secrets.IPFS_GATEWAY }}
           filename: .env
           directory: ./
 
