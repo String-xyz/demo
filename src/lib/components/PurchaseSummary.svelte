@@ -63,7 +63,7 @@
 		</div>
 		<div class="flex justify-between mt-2">
 			{#key quoted}
-			<span>Service fee</span><span in:fade="{{duration: 1000 }}">$ {quoted.serviceUSD.toFixed(2)}</span>
+			  <span>Service fee</span><span in:fade="{{duration: 1000 }}">$ {quoted.serviceUSD.toFixed(2)}</span>
 			{/key}
 		</div>
 		</div>

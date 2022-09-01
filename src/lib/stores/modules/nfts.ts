@@ -34,6 +34,7 @@ const networks: ChainData[] = [
 		provider: undefined
 	}
 ]
+
 export interface NFT {
 	id: number;
 	address: string;
