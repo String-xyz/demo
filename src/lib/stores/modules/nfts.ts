@@ -1,8 +1,10 @@
 import { ethers, type Contract } from "ethers";
 import { writable, get as getStore, type Writable, type Readable } from "svelte/store";
 import { currentAccount } from "$lib/stores";
+import { getNFTs } from "./nftMetadata";
 
 const IPFS_GATEWAY = import.meta.env.VITE_IPFS_GATEWAY;
+
 const contractABI = ['function getOwnedIDs(address owner) view returns (uint256[])', 'function tokenURI(uint256 tokenId) view returns (string)'];
 
 interface ChainData {
@@ -38,7 +40,6 @@ export interface NFT {
 	address: string;
 	chainID: number;
 	price: number;
-	txValue: string;
 	currency: string;
 	name: string;
 	description: string;
@@ -47,48 +48,7 @@ export interface NFT {
 	imageAlt: string;
 	contract?: Contract;
 }
-
-export const nfts: NFT[] = [
-	{
-		id: 1,
-		address: '0x41e11ff9f71f51800f67cb913ea6bc59d3f126aa',
-		chainID: 43113,
-		price: 0.08,
-		txValue: (0.08 * 1e18).toString(),
-		currency: 'AVAX',
-		name: 'String Test NFT [AVAX]',
-		description: 'The String logo demo NFT. Get a different color variation each time.',
-		collection: 'String Demo',
-		imageSrc: 'https://bafybeibtmy26mac47n5pp6srds76h74riqs76erw24p5yvdhmwu7pxlcx4.ipfs.nftstorage.link/STR_Logo_1.png',
-		imageAlt: "String Logo"
-	},
-	{
-		id: 2,
-		address: '0x7535f48fc7a44531e9ef0593815140e6bdf9ef65',
-		chainID: 5,
-		price: 0.08,
-		txValue: (0.08 * 1e18).toString(),
-		currency: 'ETH',
-		name: 'String Test NFT [ETH]',
-		description: 'The String logo demo NFT. Get a different color variation each time.',
-		collection: 'String Demo',
-		imageSrc: 'https://bafybeibtmy26mac47n5pp6srds76h74riqs76erw24p5yvdhmwu7pxlcx4.ipfs.nftstorage.link/STR_Logo_1.png',
-		imageAlt: "String Logo"
-	},
-	{
-		id: 3,
-		address: '0x41e60f5118785755b6337c94f301017c42baaa9c',
-		chainID: 80001,
-		price: 0.08,
-		txValue: (0.08 * 1e18).toString(),
-		currency: 'MATIC',
-		name: 'String Test NFT [POLYGON]',
-		description: 'The String logo demo NFT. Get a different color variation each time.',
-		collection: 'String Demo',
-		imageSrc: 'https://bafybeibtmy26mac47n5pp6srds76h74riqs76erw24p5yvdhmwu7pxlcx4.ipfs.nftstorage.link/STR_Logo_1.png',
-		imageAlt: "String Logo",
-	}
-];
+export const nfts: NFT[] = getNFTs();
 
 interface Collection {
 	ownedID: number;
@@ -130,5 +90,5 @@ export const getBlockExplorer = (chainId: number) => {
 };
 
 export const byId = (id: number) => {
-	return nfts.filter((item) => item.id === id).pop()!;
+	return nfts?.filter((item) => item.id === id).pop()!;
 };
