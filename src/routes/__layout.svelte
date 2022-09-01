@@ -9,6 +9,7 @@
 	function onDisconect() {
 		disconnect();
 	}
+
 </script>
 
 <div class="mx-auto h-screen">
