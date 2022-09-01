@@ -1,31 +1,18 @@
 <script context="module" lang="ts">
 	import Price from '$lib/components/Price.svelte';
-	import { nfts } from '$lib/stores';
+	import { nfts, activeTab } from '$lib/stores';
+</script>
+
+<script lang='ts'>
+	activeTab.set(0);
 </script>
 
 <div class="flex flex-col w-full p-10">
-	<h2 class="text-4xl font-extrabold pb-10">Explore the best NFTs</h2>
-	<div class="grid grid-cols-4 gap-2 pb-10">
-		<div class="span-1">
-			<p>String Technologies. The world's first and largest NFT marketplace</p>
-		</div>
-	</div>
-
-	<div class="grid grid-cols-2 gap-2 pb-10">
-		<div class="span-1">
-			<input
-				type="text"
-				placeholder="Search by name"
-				class="input input-bordered rounded-none w-full max-w-xs"
-			/>
-		</div>
-		<div class="span-1 grid grid-cols-2 gap-1">
-			<select class="select select-bordered rounded-none w-full max-w-xs span-1">
-				<option disabled selected>Price Range</option>
-				<option>High to Low</option>
-				<option>Low to High</option>
-			</select>
-		</div>
+	<h2 class="text-4xl font-extrabold pb-10">Mint an NFT With Your Credit Card
+	</h2>
+	<div class="mb-10">
+		<p class="mb-4">Web3 Platforms integrating String enable their users to initiate any on-chain activity directly with their credit card, without ever leaving their platform’s experience.</p>
+		<p>Test it out by minting an NFT with your credit card! Connect your wallet, select an NFT on your test network of choice (Ethereum, Avalanche, or Polygon), and checkout. Enter 4242 4242 4242 4242 as the card number, any future date for the expiration, and any 3-digit number for the CVV.</p>
 	</div>
 
 	<div class="grid gap-3 grid-cols-4 row-auto-flow">

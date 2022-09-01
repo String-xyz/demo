@@ -1,8 +1,9 @@
 <script lang="ts">
 	import ModalBase from './ModalBase.svelte';
-	import { getBlockExplorer, ModalManager, type NFT } from '$lib/stores';
+	import { ModalManager, type NFT } from '$lib/stores';
 
 	import PurchaseSummary from '$lib/components/PurchaseSummary.svelte';
+	import NFTDetails from '$lib/components/NFTDetails.svelte';
 
 	export let txID: string;
 	export let item: NFT;
@@ -14,22 +15,15 @@
 </script>
 
 <ModalBase title="You purchased this item!">
-	<img class="mx-auto mt-4 item" src={item.imageSrc} alt={item.imageAlt} />
-	<div class="divider" />
-	<PurchaseSummary {item} final={true} />
+	<NFTDetails {item} />
+	<div class="mt-9" />
+	<PurchaseSummary {item} {txID} final={true} />
 	<div class="text-center">
-		<a href={getBlockExplorer(item.chainID) + txID} target="_blank" rel="noreferrer noopener">
-			<button class="btn btn-outline btn-primary rounded border-2 normal-case">View Transaction</button>
-		</a>
 		<a href="/">
-			<button on:click={clear} class="btn btn-primary rounded border-2 normal-case ">Continue Shopping</button>
+			<button on:click={clear} class="btn btn-wide btn-primary rounded border-2 normal-case block m-auto">Continue Shopping</button>
+		</a>
+		<a href="/nfts/collection">
+			<button on:click={clear} class="btn btn-wide btn-primary btn-outline rounded border-2 normal-case block mt-3 m-auto ">My Collection</button>
 		</a>
 	</div>
 </ModalBase>
-
-<style>
-	.item {
-		max-width: 100px;
-		max-height: 100px;
-	}
-</style>

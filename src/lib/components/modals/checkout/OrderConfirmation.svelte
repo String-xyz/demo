@@ -23,12 +23,21 @@
 </script>
 
 <ModalBase title="Order confirmation">
-	<CardSelect />
 	<Address />
-	<div class="divider" />
+	<CardSelect />
 	<PurchaseSummary {item} />
-	<div class="text-center">
-		<button on:click={back} class="btn btn-outline btn-primary rounded border-2 normal-case ">Back</button>
-		<button on:click={purchase} class="btn btn-primary rounded border-2 normal-case " {disabled}>Purchase</button>
+	<div class="text-center mt-6">
+		<button on:click={purchase} class="btn btn-wide btn-primary rounded border-2 text-white tracking-wider block font-bold m-auto" {disabled}>Confirm and Pay</button>
+		<span on:click={back} class="inline-block mt-6 cursor-pointer">
+			<img class="inline mr-2" src="/assets/back_arrow.svg" alt="back arrow">
+			Back
+		</span>
 	</div>
 </ModalBase>
+
+<style>
+	.btn[disabled] {
+		background-color: #A8A6FF;
+		color: white;
+	}
+</style>

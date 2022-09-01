@@ -42,10 +42,10 @@
 
 <ModalBase title="Processing">
 	<NFTDetails {item} />
-	<div class="divider" />
+	<div class="mt-9"></div>
 	<Spinner />
-	<div class="text-center">
+	<div class="mt-6 text-center">
 		<p>We are purchasing this item. This procedure may take some time.</p>
-		<p class="mt-1">You will not be charged until the blockchain transaction is completed</p>
+		<p class="mt-2">You will not be charged until the blockchain transaction is completed</p>
 	</div>
 </ModalBase>
