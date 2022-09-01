@@ -19,10 +19,14 @@
 
 <ModalBase title="Pay with Card">
 	<NFTDetails {item} />
-	<div class="divider" />
 	<PurchaseSummary {item} />
-	<div class="text-center">
-		<button on:click={back} class="btn btn-outline btn-primary rounded border-2 normal-case ">Back</button>
-		<button on:click={next} class="btn btn-primary rounded border-2 normal-case ">Next</button>
+	<div class="text-center mt-6">
+		<button on:click={next} class="btn btn-wide btn-primary rounded border-2 tracking-wider	text-white">
+			Next
+			<img class="ml-2" src="/assets/next_arrow.svg" alt="next" /> 
+		</button>
+		<span on:click={back} class="inline-block mt-6 cursor-pointer">
+			Cancel
+		</span>
 	</div>
 </ModalBase>

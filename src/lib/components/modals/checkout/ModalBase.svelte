@@ -10,16 +10,16 @@
 
 <div class="backdrop">
 	<div id="modal">
-		<header class="flex justify-between mt-7">
-			<span class="title">{title}</span>
-			<button on:click={close}><img src="/assets/closebtn.svg" alt="Close" /></button>
+		<header class="flex justify-between">
+			<span class="text-2xl font-bold title">{title}</span>
+			<button on:click={close}><img src="/assets/close.svg" alt="Close" /></button>
 		</header>
 		<div class="content">
 			<slot />
 		</div>
-		<footer class="footer footer-center mb-6 mt-4 select-none text-xs">
-			<div>
-				<p>Powered by String</p>
+		<footer class="footer footer-center my-6 select-none text-xs">
+			<div class="inline">
+				<span>Powered by <img class="inline" src="/assets/string_logo_text_gray.svg" alt="String" /></span>
 			</div>
 		</footer>
 	</div>
@@ -30,19 +30,17 @@
 	:global(.divider:after) {
 		height: 1px !important;
 	}
-	.title {
-		font-size: 24px;
-		line-height: 26px;
-	}
 	.backdrop {
 		width: 100%;
 		height: 100%;
 		position: fixed;
 		background: rgba(0, 0, 0, 0.8);
 	}
+
 	#modal {
-		padding-left: 24px;
-		padding-right: 24px;
+		padding-left: 36px;
+		padding-right: 36px;
+		padding-top: 36px;
 		border-radius: 10px;
 		max-width: 374px;
 		overflow: hidden;

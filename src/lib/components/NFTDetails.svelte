@@ -9,7 +9,8 @@
 	<img class="item" src={item.imageSrc} alt={item.imageAlt} />
 	<div class="ml-4">
 		<div class="text-bold text-black">{item.name}</div>
-		<div class="overflow-auto h-20 mt-4">{item.description}</div>
+		<div class="text-bold text-black text-sm mb-2">{item.collection}</div>
+
 		<Price {item} />
 	</div>
 </div>

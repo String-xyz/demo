@@ -4,9 +4,9 @@
 	.spinner {
 		border: 4px solid #f3f3f3;
 		border-radius: 50%;
-		border-top: 4px solid #074ee8;
-		width: 40px;
-		height: 40px;
+		border-top: 4px solid #605BFF;
+		width: 60px;
+		height: 60px;
 		margin: auto;
 		margin-top: 10px;
 		margin-bottom: 10px;

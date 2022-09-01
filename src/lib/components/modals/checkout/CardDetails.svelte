@@ -47,7 +47,7 @@
 		<div class="mt-4">
 			<label for="card-number">Card number</label>
 			<div class="input-container card-number mt-1">
-				<div class="input input-bordered border-2 card-number-frame" />
+				<div class="input input-bordered input-primary border-2 card-number-frame" />
 			</div>
 		</div>
 		<div class="mt-4">
@@ -75,14 +75,18 @@
 				</div>
 			</div>
 		</div>
-		<div class="mt-10 text-center">
-			<button class="btn btn-outline btn-primary rounded border-2 normal-case" on:click={back}>Back</button>
+		<div class="text-center mt-10">
+			
 			<button
-				class="btn btn-primary rounded border-2 normal-case "
+				class="btn btn-wide btn-primary rounded border-2 tracking-wider "
 				disabled={!isPaymentInfoValid}
 				type="submit">
-				Continue
+				Save
 			</button>
+			<span on:click={back} class="inline-block mt-6 cursor-pointer">
+				<img class="inline mr-2" src="/assets/back_arrow.svg" alt="back">
+				Back
+			</span>
 		</div>
 	</form>
 </ModalBase>
@@ -92,5 +96,11 @@
 		font-size: 14px;
 		line-height: 16px;
 		color: #767676;
+	}
+
+	.btn[disabled] {
+		background-color: #A8A6FF;
+		color: white;
+
 	}
 </style>
