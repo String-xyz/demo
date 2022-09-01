@@ -1,30 +1,32 @@
 <script lang="ts">
-  import { card, ModalManager, type Card } from '$lib/stores'
-  import CardDetails from './modals/checkout/CardDetails.svelte';
+	import { card, ModalManager, type Card } from '$lib/stores';
+	import CardDetails from './modals/checkout/CardDetails.svelte';
 
-  let selected: any;
+	const changeCard = () => {
+		card.set(<Card>{})
+		ModalManager.set(CardDetails);	
+	}
 
-  const selectCard = () => {
-    if (selected == 'addCard') {
-      card.set(<Card>{});
-      ModalManager.set(CardDetails);
-    }
-  }
+	const showCardDetails = () => {
+		ModalManager.set(CardDetails);
+	};
 
-  const showCardDetails = () => {
-    ModalManager.set(CardDetails)
-  }
-  
 </script>
 
 {#if $card?.token}
-  <div class="mt-4">
-  <p>Card number</p>
-  <select bind:value={selected} on:change={selectCard} class="select select-bordered border-2 w-full mt-1">
-    <option selected>{$card.scheme} {$card.last4}</option>
-    <option value="addCard">Use other card</option>
-  </select>
-  </div>
+	<div class="flex justify-between mt-3">
+		<span>Card number</span>
+		<span>
+			{$card.scheme} *{$card.last4}
+			<img on:click={changeCard} class="inline ml-2 cursor-pointer" src="/assets/edit.svg" alt="change">
+		</span>
+	</div>
 {:else}
-  <div class="flex justify-between mt-4	"><span>Card number</span><span class="link link-primary" on:click={showCardDetails}>Add Card</span></div>
+	<div class="flex justify-between mt-3">
+		<span>Card number</span>
+		<span class="text-primary text-sm cursor-pointer" on:click={showCardDetails}>
+			<img class="inline mr-3" src="/assets/card_icon.svg" alt="card_icon" />
+			Add Card
+		</span>
+	</div>
 {/if}

@@ -1,7 +1,7 @@
 locals {
   cluster_name       = "web-app"
   env                = "dev"
-  service_name       = "app"
+  service_name       = "demo"
   root_domain        = "dev.string-api.xyz"
   container_port     = "3000"
   desired_task_count = "1"

@@ -1,30 +1,32 @@
 <script lang="ts">
-	import ModalBase from "./ModalBase.svelte";
-	import { ModalManager, type NFT } from "$lib/stores";
-	
-	import NFTDetails from "$lib/components/NFTDetails.svelte";
-	import PurchaseSummary from "$lib/components/PurchaseSummary.svelte";
-	import CheckoutOption from "./CheckoutOption.svelte";
-	import OrderConfirmation from "./OrderConfirmation.svelte";
+	import ModalBase from './ModalBase.svelte';
+	import { ModalManager, type NFT } from '$lib/stores';
+
+	import NFTDetails from '$lib/components/NFTDetails.svelte';
+	import PurchaseSummary from '$lib/components/PurchaseSummary.svelte';
+	import OrderConfirmation from './OrderConfirmation.svelte';
 
 	export let item: NFT;
 
 	const back = () => {
-		ModalManager.set(CheckoutOption)
-	}
+		ModalManager.set(null);
+	};
 
 	const next = () => {
-		ModalManager.set(OrderConfirmation)
-	}
+		ModalManager.set(OrderConfirmation);
+	};
 </script>
 
-  
 <ModalBase title="Pay with Card">
 	<NFTDetails {item} />
-	<div class="divider" />
 	<PurchaseSummary {item} />
-	<div class="text-center">
-		<button on:click={back} class="btn btn-outline btn-primary rounded border-2 normal-case">Back</button>
-		<button on:click={next} class="btn btn-primary rounded border-2 normal-case ">Next</button>
+	<div class="text-center mt-6">
+		<button on:click={next} class="btn btn-wide btn-primary rounded border-2 tracking-wider	text-white">
+			Next
+			<img class="ml-2" src="/assets/next_arrow.svg" alt="next" /> 
+		</button>
+		<span on:click={back} class="inline-block mt-6 cursor-pointer">
+			Cancel
+		</span>
 	</div>
 </ModalBase>

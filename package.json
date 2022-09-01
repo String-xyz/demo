@@ -38,9 +38,10 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/lato": "^4.5.9",
+		"@fontsource/ubuntu": "^4.5.11",
 		"cookie": "^0.4.1",
 		"daisyui": "^2.24.0",
+		"ethers": "^5.7.0",
 		"ethers-svelte": "^1.0.1"
 	}
 }

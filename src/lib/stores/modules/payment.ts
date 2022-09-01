@@ -27,7 +27,7 @@ export interface TransactPayload {
 		type: number;
 		quote: Quote;
 		cardToken: string;
-	}
+	};
 }
 
 export interface Card {
@@ -50,13 +50,13 @@ export const transact = async (item: NFT, token: string, quote: TransactPayload)
 
 const process = (item: NFT, userAddr: string): object => {
 	const data = {
-		chainID: 43113,
+		chainID: item.chainID,
 		userAddress: userAddr,
 		contractAddress: item.address,
 		contractABI: ['function mintTo(address recipient) payable returns (uint256)'],
 		contractFunction: 'mintTo',
 		contractParameters: [userAddr],
-		txValue: item.txValue,
+		txValue: (item.price * 1e18).toString(),
 		gasLimit: '8000000'
 	};
 	return data;

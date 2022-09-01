@@ -16,3 +16,9 @@ export const connect = () => {
 		currentSigner.set(store.signer);
 	});
 };
+
+export const disconnect = () => {
+	currentAccount.set('');
+	currentChainID.set(-1);
+	currentSigner.set(null);
+};

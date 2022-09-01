@@ -1,39 +1,45 @@
 <script context="module" lang="ts">
-	import { nfts } from '$lib/stores';
+	import Price from '$lib/components/Price.svelte';
+	import { nfts, activeTab } from '$lib/stores';
 </script>
 
-<div class="bg-white">
-	<div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-		<h2 class="text-2xl font-extrabold tracking-tight text-gray-900">T-shirts NFTs</h2>
+<script lang='ts'>
+	activeTab.set(0);
+</script>
 
-		<div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-			{#each nfts as product}
-				<div class="group relative">
-					<div
-						class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none"
-					>
-						<img
-							src={product.imageSrc}
-							alt={product.imageAlt}
-							class="w-full h-full object-center object-cover lg:w-full lg:h-full"
-						/>
-					</div>
-					<div class="mt-4 flex justify-between">
-						<div>
-							<h3 class="text-sm text-gray-700">
-								<a href={`nfts/${product.id}`}>
-									<span aria-hidden="true" class="absolute inset-0" />
-									{product.name}
-								</a>
-							</h3>
-						</div>
-						<p class="text-sm font-medium text-gray-900">
-							{product.price}
-							{product.currency || 'AVAX'}
-						</p>
-					</div>
+<div class="flex flex-col w-full p-10">
+	<h2 class="text-4xl font-extrabold pb-10">Mint an NFT With Your Credit Card
+	</h2>
+	<div class="mb-10">
+		<p class="mb-4">Web3 Platforms integrating String enable their users to initiate any on-chain activity directly with their credit card, without ever leaving their platform’s experience.</p>
+		<p>Test it out by minting an NFT with your credit card! Connect your wallet, select an NFT on your test network of choice (Ethereum, Avalanche, or Polygon), and checkout. Enter 4242 4242 4242 4242 as the card number, any future date for the expiration, and any 3-digit number for the CVV.</p>
+	</div>
+
+	<div class="grid gap-3 grid-cols-4 row-auto-flow">
+		{#each nfts as item}
+			<div class="card bg-base-100 shadow-xl">
+				<figure><img class="item" src={item.imageSrc} alt={item.imageAlt} /></figure>
+				<div class="card-body">
+					<p class="text-sm font-medium text-primary">{item.collection}</p>
+					<h2 class="card-title">
+						<a href={`nfts/${item.id}`}>
+							<span aria-hidden="true" class="absolute inset-0" />
+							{item.name}
+						</a>
+					</h2>
+					<p class="text-sm font-medium text-gray-900 mt-4">
+						<Price {item} />
+					</p>
 				</div>
-			{/each}
-		</div>
+			</div>
+		{/each}
 	</div>
 </div>
+
+<style>
+	.item {
+		max-width: 200px;
+		max-height: 200px;
+	}
+
+</style>
