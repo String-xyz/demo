@@ -1,7 +1,7 @@
 import { ethers, type Contract } from "ethers";
-import { writable, get as getStore, type Writable, type Readable } from "svelte/store";
+import { writable, get as getStore, type Writable } from "svelte/store";
 import { currentAccount } from "$lib/stores";
-import { getNFTs } from "./nftMetadata";
+import { getNFTs } from "./nftmetadata"
 
 const IPFS_GATEWAY = import.meta.env.VITE_IPFS_GATEWAY;
 
@@ -48,6 +48,7 @@ export interface NFT {
 	imageAlt: string;
 	contract?: Contract;
 }
+
 export const nfts: NFT[] = getNFTs();
 
 interface Collection {
