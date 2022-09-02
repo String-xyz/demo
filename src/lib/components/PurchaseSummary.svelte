@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { quote, refreshQuote, finalQuote, currentAccount, getBlockExplorer, type NFT, quoteItem, type TransactPayload } from '$lib/stores';
+	import { quote, refreshQuote, finalQuote, currentAccount, getBlockExplorer, type NFT, quoteItem, type TransactPayload, connect } from '$lib/stores';
 	import { abbrev } from '$lib/stores';
 	import { onMount, onDestroy } from 'svelte';
-	import Countdown from './Countdown.svelte';
 	import { fade } from 'svelte/transition';
+
+	// import Countdown from './Countdown.svelte';
 
 	export let item: NFT;
 	export let final = false;
@@ -12,6 +13,7 @@
 	let quoteInterval: any;
 
 	onMount(async () => {
+		connect();
 		quoteItem.set(item);
 		if (!quoteInterval) {
 			quoteInterval = await refreshQuote($currentAccount);
@@ -75,11 +77,16 @@
 		</div>
 		<div class="flex justify-between mt-3">
 			<span class="text-xs">
-				Price update in
+				Quote updates every 10s
 			</span>
-			<Countdown />
+			<!-- <Countdown /> -->
 		</div>
 	{:else}
-		<h1 class="my-5 text-center">Waiting for Quote</h1>
+		{#if $currentAccount}
+			<h1 class="my-5 text-center">Waiting for Quote</h1>
+		{:else}
+			<h1 class="my-5 text-center">Please connect your wallet</h1>
+
+		{/if}
 	{/if}
 {/if}

@@ -2,6 +2,10 @@ import type { NFT } from "./nfts";
 
 const ENV = import.meta.env.VITE_ENV;
 
+const IPFS_GATEWAY = import.meta.env.VITE_IPFS_GATEWAY
+
+const IPFS_HASH = import.meta.env.VITE_IPFS_HASH
+
 const NFTS_PROD: NFT[] = [
 	{
 		"id": 1,
@@ -12,7 +16,7 @@ const NFTS_PROD: NFT[] = [
 		"name": "String Test NFT [AVAX]",
 		"description": "The String logo demo NFT. Get a different color variation each time.",
 		"collection": "String Demo",
-		"imageSrc": "https://bafybeibtmy26mac47n5pp6srds76h74riqs76erw24p5yvdhmwu7pxlcx4.ipfs.nftstorage.link/STR_Logo_1.png",
+		"imageSrc": `${IPFS_GATEWAY}${IPFS_HASH}/STR_Logo_1.png`,
 		"imageAlt": "String Logo"
 	},
 	{
@@ -24,7 +28,7 @@ const NFTS_PROD: NFT[] = [
 		"name": "String Test NFT [ETH]",
 		"description": "The String logo demo NFT. Get a different color variation each time.",
 		"collection": "String Demo",
-		"imageSrc": "https://bafybeibtmy26mac47n5pp6srds76h74riqs76erw24p5yvdhmwu7pxlcx4.ipfs.nftstorage.link/STR_Logo_1.png",
+		"imageSrc": `${IPFS_GATEWAY}${IPFS_HASH}/STR_Logo_1.png`,
 		"imageAlt": "String Logo"
 	},
 	{
@@ -36,7 +40,7 @@ const NFTS_PROD: NFT[] = [
 		"name": "String Test NFT [POLYGON]",
 		"description": "The String logo demo NFT. Get a different color variation each time.",
 		"collection": "String Demo",
-		"imageSrc": "https://bafybeibtmy26mac47n5pp6srds76h74riqs76erw24p5yvdhmwu7pxlcx4.ipfs.nftstorage.link/STR_Logo_1.png",
+		"imageSrc": `${IPFS_GATEWAY}${IPFS_HASH}/STR_Logo_1.png`,
 		"imageAlt": "String Logo"
 	}
 ];
@@ -51,7 +55,7 @@ const NFTS_DEV: NFT[] = [
 		"name": "String Test NFT [AVAX]",
 		"description": "The String logo demo NFT. Get a different color variation each time.",
 		"collection": "String Demo",
-		"imageSrc": "https://bafybeibtmy26mac47n5pp6srds76h74riqs76erw24p5yvdhmwu7pxlcx4.ipfs.nftstorage.link/STR_Logo_1.png",
+		"imageSrc": `${IPFS_GATEWAY}${IPFS_HASH}/STR_Logo_1.png`,
 		"imageAlt": "String Logo"
 	},
 	{
@@ -63,7 +67,7 @@ const NFTS_DEV: NFT[] = [
 		"name": "String Test NFT [ETH]",
 		"description": "The String logo demo NFT. Get a different color variation each time.",
 		"collection": "String Demo",
-		"imageSrc": "https://bafybeibtmy26mac47n5pp6srds76h74riqs76erw24p5yvdhmwu7pxlcx4.ipfs.nftstorage.link/STR_Logo_1.png",
+		"imageSrc": `${IPFS_GATEWAY}${IPFS_HASH}/STR_Logo_1.png`,
 		"imageAlt": "String Logo"
 	},
 	{
@@ -75,7 +79,7 @@ const NFTS_DEV: NFT[] = [
 		"name": "String Test NFT [POLYGON]",
 		"description": "The String logo demo NFT. Get a different color variation each time.",
 		"collection": "String Demo",
-		"imageSrc": "https://bafybeibtmy26mac47n5pp6srds76h74riqs76erw24p5yvdhmwu7pxlcx4.ipfs.nftstorage.link/STR_Logo_1.png",
+		"imageSrc": `${IPFS_GATEWAY}${IPFS_HASH}/STR_Logo_1.png`,
 		"imageAlt": "String Logo"
 	}
 ];
