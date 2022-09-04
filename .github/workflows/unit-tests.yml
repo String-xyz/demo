@@ -15,8 +15,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: "yarn"
       - name: Execute Unit tests
         run: | 
           yarn
           yarn run test:unit
+      - name: Coverage
+        run: |
+          yarn run coverage

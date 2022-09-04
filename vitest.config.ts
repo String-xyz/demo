@@ -9,6 +9,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles:"./testSetup.ts",
+    coverage: {
+      provider: 'c8',
+      reporter: ['json']
+    },
     deps: {
         inline: [
           "@ethersproject/signing-key",
