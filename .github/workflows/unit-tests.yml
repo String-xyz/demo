@@ -18,5 +18,5 @@ jobs:
           cache: "npm"
       - name: Execute Unit tests
         run: | 
-          npm ci
-          npm run test:unit
+          yarn
+          yarn run test:unit
