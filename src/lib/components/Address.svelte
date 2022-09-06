@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { currentAccount, abbrev } from '$lib/stores';
-	
+
 	$: address = $currentAccount || "";
 </script>
 
