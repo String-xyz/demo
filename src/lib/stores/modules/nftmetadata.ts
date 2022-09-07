@@ -8,14 +8,6 @@ const IPFS_HASH = import.meta.env.VITE_IPFS_HASH
 
 const STR_LOGO_1 = `${IPFS_GATEWAY}${IPFS_HASH}/STR_Logo_1.png`
 
-const COMMON_PROPS = {
-	"price": 0.08,
-	"description": "The String logo demo NFT. Get a different color variation each time.",
-	"collection": "String Demo",
-	"imageSrc": STR_LOGO_1,
-	"imageAlt": "String Logo"
-}
-
 const NFTS_PROD: NFT[] = [
 	{
 		"id": 1,
@@ -23,7 +15,10 @@ const NFTS_PROD: NFT[] = [
 		"chainID": 43113,
 		"currency": "AVAX",
 		"name": "String Test NFT [AVAX]",
-		...COMMON_PROPS
+		"description": "The String logo demo NFT. Get a different color variation each time.",
+		"collection": "String Demo",
+		"imageSrc": STR_LOGO_1,
+		"imageAlt": "String Logo"
 	},
 	{
 		"id": 2,
@@ -31,7 +26,10 @@ const NFTS_PROD: NFT[] = [
 		"chainID": 5,
 		"currency": "ETH",
 		"name": "String Test NFT [ETH]",
-		...COMMON_PROPS
+		"description": "The String logo demo NFT. Get a different color variation each time.",
+		"collection": "String Demo",
+		"imageSrc": STR_LOGO_1,
+		"imageAlt": "String Logo"
 	},
 	{
 		"id": 3,
@@ -39,7 +37,10 @@ const NFTS_PROD: NFT[] = [
 		"chainID": 80001,
 		"currency": "MATIC",
 		"name": "String Test NFT [POLYGON]",
-		...COMMON_PROPS
+		"description": "The String logo demo NFT. Get a different color variation each time.",
+		"collection": "String Demo",
+		"imageSrc": STR_LOGO_1,
+		"imageAlt": "String Logo"
 	}
 ];
 
@@ -50,7 +51,10 @@ const NFTS_DEV: NFT[] = [
 		"chainID": 43113,
 		"currency": "AVAX",
 		"name": "String Test NFT [AVAX]",
-		...COMMON_PROPS
+		"description": "The String logo demo NFT. Get a different color variation each time.",
+		"collection": "String Demo",
+		"imageSrc": STR_LOGO_1,
+		"imageAlt": "String Logo"
 	},
 	{
 		"id": 2,
@@ -58,7 +62,10 @@ const NFTS_DEV: NFT[] = [
 		"chainID": 5,
 		"currency": "ETH",
 		"name": "String Test NFT [ETH]",
-		...COMMON_PROPS
+		"description": "The String logo demo NFT. Get a different color variation each time.",
+		"collection": "String Demo",
+		"imageSrc": STR_LOGO_1,
+		"imageAlt": "String Logo"
 	},
 	{
 		"id": 3,
@@ -66,7 +73,10 @@ const NFTS_DEV: NFT[] = [
 		"chainID": 80001,
 		"currency": "MATIC",
 		"name": "String Test NFT [POLYGON]",
-		...COMMON_PROPS
+		"description": "The String logo demo NFT. Get a different color variation each time.",
+		"collection": "String Demo",
+		"imageSrc": STR_LOGO_1,
+		"imageAlt": "String Logo"
 	}
 ];
 
