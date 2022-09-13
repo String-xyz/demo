@@ -16,10 +16,11 @@
 	const payWithCard = () => {
 		ModalManager.set(OrderDetails);
 	};
+	
 </script>
 
-<div class="mt-6 text-center">
-	<button class="btn btn-outline btn-primary rounded border-2 normal-case">Mint with Crypto</button>
+<div class="my-6 text-center">
+	<button class="btn btn-outline btn-primary rounded border-2 normal-case m-1">Mint with Crypto</button>
 	<button
 		class="btn btn-primary rounded border-2 normal-case "
 		on:click={payWithCard}
