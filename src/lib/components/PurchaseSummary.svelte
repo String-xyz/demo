@@ -1,29 +1,23 @@
 <script lang="ts">
-	import { quote, refreshQuote, finalQuote, currentAccount, getBlockExplorer, type NFT, quoteItem, type TransactPayload, connect } from '$lib/stores';
+	import { quote, refreshQuote, finalQuote, currentAccount, getBlockExplorer, type NFT, quoteItem, type TransactPayload, connect, quoteInterval } from '$lib/stores';
 	import { abbrev } from '$lib/stores';
 	import { onMount, onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
-
-	// import Countdown from './Countdown.svelte';
 
 	export let item: NFT;
 	export let final = false;
 	export let txID = "";
 
-	let quoteInterval: any;
-
 	onMount(async () => {
 		connect();
 		quoteItem.set(item);
-		if (!quoteInterval) {
-			quoteInterval = await refreshQuote($currentAccount);
-		}
+		await refreshQuote($currentAccount);
 	});
 
 	onDestroy(() => {
 		quoteItem.set(<NFT>{});
 		quote.set(<TransactPayload>{});
-		clearInterval(quoteInterval);
+		clearInterval($quoteInterval);
 	});
 
 	$: quoted = $quote?.data?.quote.estimate;

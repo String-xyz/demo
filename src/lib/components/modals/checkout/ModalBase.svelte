@@ -8,7 +8,7 @@
 	};
 </script>
 
-<div class="backdrop">
+<div class="backdrop" on:click|stopPropagation>
 	<div id="modal">
 		<header class="flex justify-between">
 			<span class="text-2xl font-bold title">{title}</span>
@@ -30,6 +30,7 @@
 	:global(.divider:after) {
 		height: 1px !important;
 	}
+
 	.backdrop {
 		width: 100%;
 		height: 100%;
