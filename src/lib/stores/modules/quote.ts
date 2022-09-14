@@ -20,7 +20,7 @@ export const refreshQuote = async (userAddr: string) => {
 	await refreshQuote();
 
 	if (getStore(quoteInterval)) {
-		clearInterval(getStore(quoteInterval));
+		clearInterval(getStore(quoteInterval))
 	}
 
 	quoteInterval.set(setInterval(refreshQuote, 10000));

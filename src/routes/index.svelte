@@ -7,10 +7,6 @@
 	activeTab.set(0);
 </script>
 
-<svelte:head>
-	<title>String Demo</title>
-</svelte:head>
-
 <div class="flex flex-col w-full p-10 main">
 	<h2 class="text-4xl font-extrabold pb-10">Mint an NFT With Your Credit Card
 	</h2>
