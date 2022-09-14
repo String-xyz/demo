@@ -32,10 +32,7 @@ export const get = async (path: string) => {
 
 export const getStatus = async () => {
 	const result = await get('healthcheck');
-	const geoRestricted = result.status == 401;
 	const APIError = result.error !== undefined;
 
-	return { geoRestricted, APIError };
+	return { APIError };
 };
-
-// ADD other HTTP Method below
