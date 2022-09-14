@@ -10,7 +10,7 @@ export const post = async (path: string, body: any = undefined) => {
 		if (result.ok) {
 			return result.json();
 		} else {
-			return { status: result.status };
+			return { statusCode: result.status };
 		}
 	} catch (e) {
 		return { data: undefined, error: e };
@@ -23,7 +23,7 @@ export const get = async (path: string) => {
 		if (result.ok) {
 			return result.json();
 		} else {
-			return { status: result.status };
+			return { statusCode: result.status };
 		}
 	} catch (e) {
 		return { data: undefined, error: e };
@@ -32,7 +32,7 @@ export const get = async (path: string) => {
 
 export const getStatus = async () => {
 	const result = await get('healthcheck');
-	const APIError = result.error !== undefined;
-
+	const APIError = result?.statusCode !== undefined;
+	
 	return { APIError };
 };
