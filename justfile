@@ -5,7 +5,7 @@ APP := "demo"
 DEMO_APP := "demo-app"
 ECS_CLUSTER := "web-app"
 AWS_REGION := "us-west-2"
-ECR := "$ACCT.dkr.ecr.us-west-2.amazonaws.com"
+ECR := "$AWS_ACCT.dkr.ecr.us-west-2.amazonaws.com"
 ECS_APP_REPO := ECR+"/"+APP
 DEMO_APP_REPO:= ECR+"/"+DEMO_APP
 

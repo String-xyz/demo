@@ -1,4 +1,4 @@
-FROM node:17.0 as build
+FROM node:18.0 as build
 
 # install dependencies
 COPY package.json yarn.lock ./
