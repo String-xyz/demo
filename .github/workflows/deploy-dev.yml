@@ -20,7 +20,7 @@ jobs:
       - name: setup nodejs
         uses: actions/setup-node@v2.1.3
         with:
-          node-version: 17.0.0
+          node-version: 18.0.0
           
       - name: generate env
         uses: SpicyPizza/create-envfile@v1.3

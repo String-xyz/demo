@@ -1,29 +1,25 @@
 <script lang="ts">
-	import { quote, refreshQuote, finalQuote, currentAccount, getBlockExplorer, type NFT, quoteItem, type TransactPayload, connect } from '$lib/stores';
+	import { quote, refreshQuote, finalQuote, currentAccount, 
+		getBlockExplorer, quoteItem, connect, quoteInterval,
+		type NFT, type TransactPayload } from '$lib/stores';
 	import { abbrev } from '$lib/stores';
 	import { onMount, onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
-
-	// import Countdown from './Countdown.svelte';
 
 	export let item: NFT;
 	export let final = false;
 	export let txID = "";
 
-	let quoteInterval: any;
-
 	onMount(async () => {
 		connect();
 		quoteItem.set(item);
-		if (!quoteInterval) {
-			quoteInterval = await refreshQuote($currentAccount);
-		}
+		await refreshQuote($currentAccount);
 	});
 
 	onDestroy(() => {
 		quoteItem.set(<NFT>{});
 		quote.set(<TransactPayload>{});
-		clearInterval(quoteInterval);
+		clearInterval($quoteInterval);
 	});
 
 	$: quoted = $quote?.data?.quote.estimate;
@@ -52,29 +48,23 @@
 		<span class="text-xl font-bold">Purchase summary</span>
 	</div>
 	{#if quoted}
-		<div class="text-sm mt-5">
-		<div class="flex justify-between">
-			{#key quoted}
-				<span>Item price</span><span in:fade="{{duration: 1000 }}">$ {quoted.baseUSD.toFixed(2)}</span>
-			{/key}
-		</div>
-		<div class="flex justify-between mt-2">			
-			{#key quoted}
-				<span>Network fee</span><span in:fade="{{duration: 1000 }}">$ {quoted.gasUSD.toFixed(2)}</span>
-			{/key}
-		</div>
-		<div class="flex justify-between mt-2">
-			{#key quoted}
-			  <span>Service fee</span><span in:fade="{{duration: 1000 }}">$ {quoted.serviceUSD.toFixed(2)}</span>
-			{/key}
-		</div>
-		</div>
-		<div class="divider" />
-		<div class="flex justify-between mb-4 text-xl">
-			{#key quoted}
+		{#key quoted}
+			<div class="text-sm mt-5">
+				<div class="flex justify-between">
+					<span>Item price</span><span in:fade="{{ duration: 1000 }}">$ {quoted.baseUSD.toFixed(2)}</span>
+				</div>
+				<div class="flex justify-between mt-2">			
+					<span>Network fee</span><span in:fade="{{ duration: 1000 }}">$ {quoted.gasUSD.toFixed(2)}</span>
+				</div>
+				<div class="flex justify-between mt-2">
+					<span>Service fee</span><span in:fade="{{ duration: 1000 }}">$ {quoted.serviceUSD.toFixed(2)}</span>
+				</div>
+			</div>
+			<div class="divider" />
+			<div class="flex justify-between mb-4 text-xl">
 				<span class="font-bold">Total</span><span in:fade="{{duration: 1000 }}">$ {quoted.totalUSD.toFixed(2)}</span>
-			{/key}
-		</div>
+			</div>
+		{/key}
 		<div class="flex justify-between mt-3">
 			<span class="text-xs">
 				Quote updates every 10s
@@ -82,11 +72,12 @@
 			<!-- <Countdown /> -->
 		</div>
 	{:else}
-		{#if $currentAccount}
-			<h1 class="my-5 text-center">Waiting for Quote</h1>
-		{:else}
-			<h1 class="my-5 text-center">Please connect your wallet</h1>
-
-		{/if}
+		<div class="my-5 text-center">
+			{#if $currentAccount}
+				<h1>Waiting for Quote</h1>
+			{:else}
+				<h1>Please connect your wallet</h1>
+			{/if}
+		</div>
 	{/if}
 {/if}

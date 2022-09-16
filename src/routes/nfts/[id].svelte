@@ -26,11 +26,15 @@
 
 </script>
 
+<svelte:head>
+	<title>String Demo | {item?.name}</title>
+</svelte:head>
+
 <svelte:component this={$ModalManager} {...$ModalProps} />
 {#if item}
-  <div class="container flex m-auto mt-4">
+  <div class="container flex m-auto mt-4 main">
     <img class="showcase" src={item.imageSrc} alt={item.imageAlt}>
-    <div>
+    <div class="mt-4">
       <p class="text-primary text-lg font-bold">{item.collection}</p>
       <p class="text-black text-3xl font-bold mb-4">{item.name}</p>
       <p class="mb-4">{item.description}</p>
@@ -50,4 +54,25 @@
     width: 400px;
     height: 400px;
   }
+
+
+  @media (max-width: 500px) {
+		.main {
+			margin-left: 16px;
+			margin-right: 16px;
+      width: calc(100% - 32px);
+		}
+	}
+
+  @media (max-width: 800px) {
+    .container {
+      flex-flow: wrap;
+      align-items: center;
+      justify-content: center
+    }
+    .showcase {
+      margin: auto;
+    }
+  }
+
 </style>

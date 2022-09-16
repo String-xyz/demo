@@ -62,7 +62,7 @@ export const collection: Writable<Collection[]> = writable();
 export const getOwnedIDs = async () => {
 	let _collection: Collection[] = [];
 
-	let account = getStore(currentAccount)
+	let account = getStore(currentAccount);
 
 	for (const nft of nfts) {
 		let chainData = networks.find(data => data.chainId == nft.chainID);
@@ -80,7 +80,7 @@ export const getOwnedIDs = async () => {
 
 		for (const ownedID of ids) {
 			let ownedURL = (await nft.contract.tokenURI(ownedID)).replace("ipfs://", IPFS_GATEWAY);
-			_collection.push({ownedID, ownedURL, nft})
+			_collection.push({ownedID, ownedURL, nft});
 		}
 	}
 	collection.set(_collection);

@@ -6,6 +6,8 @@ export const finalQuote: Writable<TransactPayload> = writable();
 export const quote: Writable<TransactPayload> = writable();
 export const quoteItem: Writable<NFT> = writable();
 
+export const quoteInterval: Writable<NodeJS.Timer> = writable();
+
 export const refreshQuote = async (userAddr: string) => {
 	const refreshQuote = async () => {
 		try {
@@ -17,6 +19,9 @@ export const refreshQuote = async (userAddr: string) => {
 
 	await refreshQuote();
 
-	const interval = setInterval(refreshQuote, 10000);
-	return interval;
+	if (getStore(quoteInterval)) {
+		clearInterval(getStore(quoteInterval));
+	}
+
+	quoteInterval.set(setInterval(refreshQuote, 10000));
 };
