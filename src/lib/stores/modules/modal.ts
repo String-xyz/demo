@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { writable, type Writable } from 'svelte/store';
 
-export const ModalManager = writable();
-export const ModalProps = writable({});
+export const ModalManager: Writable<any> = writable();
+export const ModalProps: Writable<any> = writable({});

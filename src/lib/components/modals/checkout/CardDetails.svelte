@@ -76,7 +76,6 @@
 			</div>
 		</div>
 		<div class="text-center mt-10">
-			
 			<button
 				class="btn btn-wide btn-primary rounded border-2 tracking-wider "
 				disabled={!isPaymentInfoValid}
