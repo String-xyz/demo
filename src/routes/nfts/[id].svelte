@@ -26,6 +26,10 @@
 
 </script>
 
+<svelte:head>
+	<title>String Demo | {item?.name}</title>
+</svelte:head>
+
 <svelte:component this={$ModalManager} {...$ModalProps} />
 {#if item}
   <div class="container flex m-auto mt-4 main">

@@ -10,6 +10,9 @@
 	});
 </script>
 
+<svelte:head>
+	<title>String Demo | Collection</title>
+</svelte:head>
 
 <div class="flex flex-col w-full p-10 main">
 	<h2 class="text-4xl font-extrabold">My Collection</h2>
