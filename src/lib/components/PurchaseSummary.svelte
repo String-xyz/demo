@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { quote, refreshQuote, finalQuote, currentAccount, getBlockExplorer, type NFT, quoteItem, type TransactPayload, connect, quoteInterval } from '$lib/stores';
+	import { quote, refreshQuote, finalQuote, currentAccount, 
+		getBlockExplorer, quoteItem, connect, quoteInterval,
+		type NFT, type TransactPayload } from '$lib/stores';
 	import { abbrev } from '$lib/stores';
 	import { onMount, onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
