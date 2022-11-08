@@ -1,4 +1,4 @@
-import { ethers, type Contract } from "ethers";
+import { ethers, type BigNumber, type Contract } from "ethers";
 import { writable, get as getStore, type Writable } from "svelte/store";
 import { currentAccount } from "$lib/stores";
 import { getNFTs } from "./nftmetadata"
@@ -60,12 +60,12 @@ interface Collection {
 export const collection: Writable<Collection[]> = writable();
 
 export const getOwnedIDs = async () => {
-	let _collection: Collection[] = [];
+	const _collection: Collection[] = [];
 
-	let account = getStore(currentAccount);
+	const account = getStore(currentAccount);
 
 	for (const nft of nfts) {
-		let chainData = networks.find(data => data.chainId == nft.chainID);
+		const chainData = networks.find(data => data.chainId == nft.chainID);
 		if (!chainData) return;
 
 		if (!chainData.provider) {
@@ -76,10 +76,10 @@ export const getOwnedIDs = async () => {
 			nft.contract = new ethers.Contract(nft.address, contractABI, chainData.provider);
 		}
 
-		let ids = (await nft.contract.getOwnedIDs(account)).map((id: any) => id.toNumber());
+		const ids = (await nft.contract.getOwnedIDs(account)).map((id: BigNumber) => id.toNumber());
 
 		for (const ownedID of ids) {
-			let ownedURL = (await nft.contract.tokenURI(ownedID)).replace("ipfs://", IPFS_GATEWAY);
+			const ownedURL = (await nft.contract.tokenURI(ownedID)).replace("ipfs://", IPFS_GATEWAY);
 			_collection.push({ownedID, ownedURL, nft});
 		}
 	}
@@ -91,5 +91,5 @@ export const getBlockExplorer = (chainId: number) => {
 };
 
 export const byId = (id: number) => {
-	return nfts?.filter((item) => item.id === id).pop()!;
+	return nfts?.filter((item) => item.id === id).pop();
 };
