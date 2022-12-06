@@ -10,7 +10,9 @@
 <script lang="ts">
 	import { byId, currentAccount, connect } from '$lib/stores';
 	import Price from '$lib/components/Price.svelte';
-	import { StringPayButton, type StringPay, type StringPayload } from 'string-sdk'
+	import StringPayButton from '$lib/components/StringPayButton.svelte';
+
+	import type { StringPay, StringPayload } from '@stringpay/sdk'
 
 	export let id: string;
 	$: item = byId(Number(id));
