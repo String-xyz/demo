@@ -7,12 +7,12 @@ import { ExternalProvider } from "@ethersproject/providers";
 
 declare global {
 	namespace App {
-	  interface Locals {
-		userid: string;
-	  }
+		interface Locals {
+			userid: string;
+		}
 
-	  interface Window {
-		ethereum?: ExternalProvider;
-	  }
+		interface Window {
+			ethereum?: ExternalProvider;
+		}
 	}
   }

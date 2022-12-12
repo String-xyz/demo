@@ -22,16 +22,3 @@ export const disconnect = () => {
 	currentChainID.set(-1);
 	currentSigner.set(null);
 };
-
-// import { readable, type Readable } from 'svelte/store';
-// import { ethers } from 'ethers';
-
-// const provider = new ethers.providers.Web3Provider(window.ethereum)
-
-// export const currentAccount: Readable<string> = readable("", function start(set) {
-// 	let provider = ethers.providers.Web3Provider(window.ethereum)
-
-// 	return function stop() {
-// 		clearInterval(interval);
-// 	};
-// });
