@@ -19,7 +19,7 @@ const COMMON_PROPS = {
 const NFTS_PROD: NFT[] = [
 	{
 		"id": 1,
-		"address": "0x16a58b741fb1f645a9b7206c46dfa37478feb5dc",
+		"address": "0x16a58B741fB1f645a9b7206C46dfA37478Feb5dC",
 		"chainID": 43113,
 		"currency": "AVAX",
 		"name": "String Test NFT [AVAX]",
@@ -27,7 +27,7 @@ const NFTS_PROD: NFT[] = [
 	},
 	{
 		"id": 2,
-		"address": "0xaec6940273327e560aae2f53f9e6344ee0b5c72d",
+		"address": "0xAEc6940273327E560aaE2F53F9e6344ee0b5C72D",
 		"chainID": 5,
 		"currency": "ETH",
 		"name": "String Test NFT [ETH]",
@@ -35,7 +35,7 @@ const NFTS_PROD: NFT[] = [
 	},
 	{
 		"id": 3,
-		"address": "0xd37e73f197ec78fd08833aeead6eddf105a3fb33",
+		"address": "0xd37E73f197EC78FD08833AEeaD6EddF105a3FB33",
 		"chainID": 80001,
 		"currency": "MATIC",
 		"name": "String Test NFT [POLYGON]",
@@ -46,7 +46,7 @@ const NFTS_PROD: NFT[] = [
 const NFTS_DEV: NFT[] = [
 	{
 		"id": 1,
-		"address": "0x41e11ff9f71f51800f67cb913ea6bc59d3f126aa",
+		"address": "0x41e11fF9F71f51800F67cb913eA6Bc59d3F126Aa",
 		"chainID": 43113,
 		"currency": "AVAX",
 		"name": "String Test NFT [AVAX]",
@@ -54,7 +54,7 @@ const NFTS_DEV: NFT[] = [
 	},
 	{
 		"id": 2,
-		"address": "0x7535f48fc7a44531e9ef0593815140e6bdf9ef65",
+		"address": "0x7535f48fC7A44531e9Ef0593815140E6bdF9EF65",
 		"chainID": 5,
 		"currency": "ETH",
 		"name": "String Test NFT [ETH]",
@@ -62,7 +62,7 @@ const NFTS_DEV: NFT[] = [
 	},
 	{
 		"id": 3,
-		"address": "0x41e60f5118785755b6337c94f301017c42baaa9c",
+		"address": "0x41E60F5118785755b6337c94F301017c42BaAA9C",
 		"chainID": 80001,
 		"currency": "MATIC",
 		"name": "String Test NFT [POLYGON]",
