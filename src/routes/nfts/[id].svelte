@@ -116,6 +116,7 @@
 
 	.string-pay-frame {
 		display: inline-block;
+		width: 100%;
 	}
 	
 	.showcase {
