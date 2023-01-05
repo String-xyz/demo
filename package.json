@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"license": "UNLICENSED",
 	"scripts": {
-		"dev": "vite dev --host",
+		"dev": "vite dev --host --port 3000",
 		"build": "vite build",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
@@ -49,6 +49,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/ubuntu": "^4.5.11",
+		"@stringpay/sdk": "^0.0.1",
 		"cookie": "^0.4.1",
 		"daisyui": "^2.24.0",
 		"ethers": "^5.7.0",

@@ -14,13 +14,13 @@
 	<title>String Demo | Collection</title>
 </svelte:head>
 
-<div class="flex flex-col w-full p-10 main">
-	<h2 class="text-4xl font-extrabold">My Collection</h2>
-	<div class="my-10">
+<div class="flex flex-col w-full main">
+	<h2 class="text-4xl font-extrabold ml-10 my-8">My Collection</h2>
+	<div class="ml-10 mb-6">
 		<p>View your NFTs</p>
 	</div>
 	
-	<div class="grid showcase gap-3">
+	<div class="grid showcase gap-3 p-10">
 		{#if $currentAccount}
 			{#await getOwnedIDs() }
 				<div class="m-auto">
@@ -83,6 +83,8 @@
 
 	.showcase {
 		grid-template-columns: repeat(4, minmax(250px, 1fr));
+		overflow: auto;
+		max-height: 90vh;
 	}
 
 	@media (max-width: 1100px) {
