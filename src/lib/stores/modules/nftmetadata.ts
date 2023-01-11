@@ -6,20 +6,20 @@ const IPFS_GATEWAY = import.meta.env.VITE_IPFS_GATEWAY
 
 const IPFS_HASH = import.meta.env.VITE_IPFS_HASH
 
-const STR_LOGO_1 = `${IPFS_GATEWAY}${IPFS_HASH}/STR_Logo_1.png`
+const STR_NFT_1 = `${IPFS_GATEWAY}${IPFS_HASH}/Demo_Character_1.png`
 
 const COMMON_PROPS = {
 	"price": 0.08,
-	"description": "The String logo demo NFT. Get a different color variation each time.",
+	"description": "The String demo NFT. Get a different character each time.",
 	"collection": "String Demo",
-	"imageSrc": STR_LOGO_1,
-	"imageAlt": "String Logo"
+	"imageSrc": STR_NFT_1,
+	"imageAlt": "String NFT"
 }
 
 const NFTS_PROD: NFT[] = [
 	{
 		"id": 1,
-		"address": "0x16a58B741fB1f645a9b7206C46dfA37478Feb5dC",
+		"address": "0xea1ffe2cf6630a20e1ba397e95358daf362c8781",
 		"chainID": 43113,
 		"currency": "AVAX",
 		"name": "String Test NFT [AVAX]",
@@ -27,7 +27,7 @@ const NFTS_PROD: NFT[] = [
 	},
 	{
 		"id": 2,
-		"address": "0xAEc6940273327E560aaE2F53F9e6344ee0b5C72D",
+		"address": "0x8e545d0FFA293F328f5A9D1b09c58158105aD13B",
 		"chainID": 5,
 		"currency": "ETH",
 		"name": "String Test NFT [ETH]",
@@ -35,7 +35,7 @@ const NFTS_PROD: NFT[] = [
 	},
 	{
 		"id": 3,
-		"address": "0xd37E73f197EC78FD08833AEeaD6EddF105a3FB33",
+		"address": "0xf0F6D94757235a3d6347B366AeE76A3C84D21392",
 		"chainID": 80001,
 		"currency": "MATIC",
 		"name": "String Test NFT [POLYGON]",
@@ -46,7 +46,7 @@ const NFTS_PROD: NFT[] = [
 const NFTS_DEV: NFT[] = [
 	{
 		"id": 1,
-		"address": "0x41e11fF9F71f51800F67cb913eA6Bc59d3F126Aa",
+		"address": "0xea1ffe2cf6630a20e1ba397e95358daf362c8781",
 		"chainID": 43113,
 		"currency": "AVAX",
 		"name": "String Test NFT [AVAX]",
@@ -54,7 +54,7 @@ const NFTS_DEV: NFT[] = [
 	},
 	{
 		"id": 2,
-		"address": "0x7535f48fC7A44531e9Ef0593815140E6bdF9EF65",
+		"address": "0x8e545d0FFA293F328f5A9D1b09c58158105aD13B",
 		"chainID": 5,
 		"currency": "ETH",
 		"name": "String Test NFT [ETH]",
@@ -62,7 +62,7 @@ const NFTS_DEV: NFT[] = [
 	},
 	{
 		"id": 3,
-		"address": "0x41E60F5118785755b6337c94F301017c42BaAA9C",
+		"address": "0xf0F6D94757235a3d6347B366AeE76A3C84D21392",
 		"chainID": 80001,
 		"currency": "MATIC",
 		"name": "String Test NFT [POLYGON]",
