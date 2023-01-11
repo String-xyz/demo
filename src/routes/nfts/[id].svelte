@@ -12,7 +12,7 @@
 	import Price from '$lib/components/Price.svelte';
 	import StringPayButton from '$lib/components/StringPayButton.svelte';
 
-	import type { StringPay, StringPayload } from '@stringpay/sdk'
+	import type { StringPay, StringPayload } from '@stringpay/sdk-dev'
 
 	export let id: string;
 	$: item = byId(Number(id));

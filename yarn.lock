@@ -520,6 +520,11 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.34.tgz#35b799cf98a203d1940c8ce06688f9a09fbc0f50"
   integrity sha512-x3ejWKw7rpy30Bvm6U0AQMOHdjqe2E3YJrBHlTxH0KFsp77bBa+MH324nJxtXZFpnTy/JW2h5HPYVm0vG2WPnw==
 
+"@stringpay/sdk-dev@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@stringpay/sdk-dev/-/sdk-dev-0.1.6.tgz#df81924d127cbb2404be9e55ad6337e0d273b482"
+  integrity sha512-nY+KR22V8pfGKpI1I5ETBAxRO0yyIB0UT5U8NId1hJFSL+vfn45V6UvyfXLZT4ZiS8uKDKnsBVRSKZ2sMg886g==
+
 "@sveltejs/adapter-node@1.0.0-next.77":
   version "1.0.0-next.77"
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-node/-/adapter-node-1.0.0-next.77.tgz#7ef027e79ae878cca6df6501e334baac204e5723"
