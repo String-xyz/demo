@@ -12,7 +12,7 @@
 	import Price from '$lib/components/Price.svelte';
 	import StringPayButton from '$lib/components/StringPayButton.svelte';
 
-	import type { StringPay, StringPayload } from '@stringpay/sdk'
+	import type { StringPay, StringPayload } from '@stringpay/sdk-dev'
 
 	export let id: string;
 	$: item = byId(Number(id));
@@ -70,7 +70,7 @@
 </svelte:head>
 
 <div class="backdrop" class:hide='{!isLoaded}' on:click|stopPropagation>
-	<div class="string-pay-frame" />
+	<div class="string-pay-frame flex justify-center w-full" />
 </div>
 
 {#if item}
@@ -112,11 +112,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
-
-	.string-pay-frame {
-		display: inline-block;
-		width: 100%;
 	}
 	
 	.showcase {
