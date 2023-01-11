@@ -1,6 +1,6 @@
 <script lang='ts'>
 	import { onMount } from 'svelte'
-	import type { StringPay, StringPayload } from '@stringpay/sdk'
+	import type { StringPay, StringPayload } from '@stringpay/sdk-dev'
 
 	export let payload: StringPayload;
 
