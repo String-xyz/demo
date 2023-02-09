@@ -55,11 +55,11 @@
 
 	$: isLoaded = false;
 
-	StringPay.onframeload = () => { 
+	StringPay.onFrameLoad = () => { 
 		isLoaded = true
 	}
 
-	StringPay.onframeclose = () => {
+	StringPay.onFrameClose = () => {
 		isLoaded = false
 	}
 
