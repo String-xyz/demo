@@ -22,14 +22,15 @@
 	
 	connect();
 
-	const STRING_API_KEY: string = import.meta.env.VITE_STRING_API_KEY;
+	const STRING_API_KEY = import.meta.env.VITE_STRING_API_KEY;
+	const STRING_SDK_ENV = import.meta.env.VITE_STRING_SDK_ENV;
 
 	if (!StringPay) {
 		console.error("[String Pay] Cannot find stringpay module in DOM");
 	}
 
 	StringPay.init({
-		env: "DEV",
+		env: STRING_SDK_ENV,
 		publicKey: STRING_API_KEY,
 	});
 
