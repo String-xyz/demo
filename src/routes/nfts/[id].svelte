@@ -12,7 +12,7 @@
 	import Price from '$lib/components/Price.svelte';
 	import StringPayButton from '$lib/components/StringPayButton.svelte';
 
-	import type { StringPay, StringPayload } from '@stringpay/sdk-dev'
+	import type { StringPay, StringPayload } from '@stringpay/sdk'
 
 	export let id: string;
 	$: item = byId(Number(id));
@@ -22,13 +22,22 @@
 	
 	connect();
 
-	const STRING_API_KEY: string = import.meta.env.VITE_STRING_API_KEY ?? "No API Key in ENV";
+	const STRING_API_KEY = import.meta.env.VITE_STRING_API_KEY;
+	const STRING_SDK_ENV = import.meta.env.VITE_STRING_SDK_ENV;
+
+	if (!StringPay) {
+		console.error("[String Pay] Cannot find stringpay module in DOM");
+	}
+
+	StringPay.init({
+		env: STRING_SDK_ENV,
+		publicKey: STRING_API_KEY,
+	});
 
 	$: {
 		const currentItem = item;
 		if (currentItem) {
 			payload = {
-				apiKey: STRING_API_KEY,
 				name: currentItem.name,
 				collection: currentItem.collection,
 				currency: currentItem.currency,
