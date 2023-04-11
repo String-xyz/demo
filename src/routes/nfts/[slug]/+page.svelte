@@ -1,37 +1,48 @@
-<script lang="ts" context="module">
-	import type { Load } from '@sveltejs/kit';
-
-	export const load: Load = ({ params }) => {
-		const id = params.id;
-		return { props: { id } };
-	};
-</script>
-
 <script lang="ts">
-	import { byId, currentAccount, connect } from '$lib/stores';
-	import Price from '$lib/components/Price.svelte';
+	import { onMount } from 'svelte';
+	import { defaultEvmStores, signerAddress } from 'svelte-ethers-store';
+	import type { PageData } from './$types';
+	import type { StringPay, StringPayload } from '@stringpay/sdk';
+
+	import { getNFTById } from '$lib/services/nft.service';
+
 	import StringPayButton from '$lib/components/StringPayButton.svelte';
+	import Price from '$lib/components/Price.svelte';
 
-	import type { StringPay, StringPayload } from '@stringpay/sdk'
+	export let data: PageData;
 
-	export let id: string;
-	$: item = byId(Number(id));
-	
-	let payload: StringPayload;
-	let StringPay: StringPay = (<any>window).StringPay;
-	
-	connect();
+	let item = getNFTById(data.id);
 
 	const STRING_API_KEY = import.meta.env.VITE_STRING_API_KEY;
 	const STRING_SDK_ENV = import.meta.env.VITE_STRING_SDK_ENV;
 
-	if (!StringPay) {
-		console.error("[String Pay] Cannot find stringpay module in DOM");
-	}
+	let StringPay: StringPay;
+	let payload: StringPayload;
+	let isFrameLoaded = false;
 
-	StringPay.init({
-		env: STRING_SDK_ENV,
-		publicKey: STRING_API_KEY,
+	onMount(() => {
+		// Prompt connect wallet
+		defaultEvmStores.setProvider();
+
+		// Load StringPay
+		StringPay = (<any>window).StringPay;
+
+		if (!StringPay) {
+			console.error("[String Pay] Cannot find stringpay module in DOM");
+		}
+
+		StringPay.init({
+			env: STRING_SDK_ENV,
+			publicKey: STRING_API_KEY,
+		});
+
+		StringPay.onFrameLoad = () => { 
+			isFrameLoaded = true;
+		}
+
+		StringPay.onFrameClose = () => {
+			isFrameLoaded = false;
+		}
 	});
 
 	$: {
@@ -44,41 +55,25 @@
 				price: currentItem.price,
 				imageSrc: currentItem.imageSrc,
 				chainID: currentItem.chainID,
-				userAddress: $currentAccount,
+				userAddress: $signerAddress,
 				contractAddress: currentItem.address,
 				contractFunction: "mintTo(address)",
 				contractReturn: "uint256",
-				contractParameters: [$currentAccount],
+				contractParameters: [$signerAddress],
 				txValue: "0.08 eth"
 			}
 
 		}
 	}
 
-	// TODO: Have button warn user they aren't connected when trying to click
-	// const checkWallet = () => {
-	// 	showWalletWarning = !$currentAccount
-	// }
-
-	// $: showWalletWarning = !$currentAccount;
-
-	$: isLoaded = false;
-
-	StringPay.onFrameLoad = () => { 
-		isLoaded = true
-	}
-
-	StringPay.onFrameClose = () => {
-		isLoaded = false
-	}
-
 </script>
 
 <svelte:head>
-	<title>String Demo | {item?.name}</title>
+	<title>String Demo | {item?.name ?? "NFT"}</title>
 </svelte:head>
 
-<div class="backdrop" class:hide='{!isLoaded}' on:click|stopPropagation>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div class="backdrop" class:!hidden='{!isFrameLoaded}' on:click|stopPropagation>
 	<div class="string-pay-frame flex justify-center w-full" />
 </div>
 
@@ -95,24 +90,10 @@
 				<StringPayButton {payload} />
 			{/if}
 		</div>
-		
-		<!-- TODO: Have button warn user they aren't connected when trying to click -->
-		<!-- {#if showWalletWarning}
-			<div class="card bg-base-100 shadow-xl">
-				<div class="card-body">
-					<p>Please connect with your wallet</p>
-					<button on:click={() => showWalletWarning = false}>Close</button>
-				</div>
-			</div>
-		{/if} -->
 	</div>
 {/if}
 
-
 <style>
-	.hide {
-		display: none !important;
-	}
 	.backdrop {
 		width: 100%;
 		height: 100%;
@@ -130,7 +111,6 @@
 		width: 400px;
 		height: 400px;
 	}
-
 
 	@media (max-width: 500px) {
 		.main {

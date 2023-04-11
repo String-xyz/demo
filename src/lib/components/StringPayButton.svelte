@@ -1,6 +1,6 @@
 <script lang='ts'>
 	import { onMount } from 'svelte'
-	import type { StringPay, StringPayload } from '@stringpay/sdk-dev'
+	import type { StringPay, StringPayload } from '@stringpay/sdk'
 
 	export let payload: StringPayload;
 
@@ -8,10 +8,6 @@
 
 	onMount(() => {
 		StringPay = (<any>window).StringPay
-
-		if (!StringPay) {
-			console.error('[String Pay] Cannot find stringpay module in DOM')
-		}
 	});
 
 	const init = (payload: StringPayload) => {
@@ -20,6 +16,8 @@
 </script>
 
 <button
-class="btn btn-primary rounded border-2 normal-case"
-on:click={() => init(payload)}>Mint with Card
+	class="btn btn-primary rounded border-2 tracking-wider text-white h-11"
+	on:click={() => init(payload)}
+>
+	Mint with Card
 </button>
