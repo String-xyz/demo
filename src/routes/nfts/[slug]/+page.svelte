@@ -80,7 +80,7 @@
 {#if item}
 	<div class="container flex m-auto mt-4 main">
 		<img class="showcase" src={item.imageSrc} alt={item.imageAlt}>
-		<div class="mt-4">
+		<div class="my-4">
 			<p class="text-primary text-lg font-bold">{item.collection}</p>
 			<p class="text-black text-3xl font-bold mb-4">{item.name}</p>
 			<p class="mb-4">{item.description}</p>

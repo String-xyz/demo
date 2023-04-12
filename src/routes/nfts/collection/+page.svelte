@@ -94,6 +94,8 @@
 		.showcase {
 			grid-template-columns: repeat(1, minmax(250px, 1fr));
 			align-self: center;
+			padding-left: 0;
+			padding-right: 0;
 		}
 	}
 
