@@ -25,7 +25,7 @@
 		defaultEvmStores.setProvider();
 
 		// Load StringPay
-		StringPay = (<any>window).StringPay;
+		StringPay = window.StringPay;
 
 		if (!StringPay) {
 			console.error('[String Pay] Cannot find stringpay module in DOM');
