@@ -1,1 +1,1 @@
-export * from './nft_data'
+export * from './nft_data';

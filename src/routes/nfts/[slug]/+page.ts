@@ -10,6 +10,6 @@ export const load = (({ params }) => {
 			message: 'Not found'
 		});
 	}
-	 
+
 	return { id };
 }) satisfies PageLoad;

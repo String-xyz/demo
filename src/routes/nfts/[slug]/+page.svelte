@@ -28,21 +28,21 @@
 		StringPay = (<any>window).StringPay;
 
 		if (!StringPay) {
-			console.error("[String Pay] Cannot find stringpay module in DOM");
+			console.error('[String Pay] Cannot find stringpay module in DOM');
 		}
 
 		StringPay.init({
 			env: STRING_SDK_ENV,
-			publicKey: STRING_API_KEY,
+			publicKey: STRING_API_KEY
 		});
 
-		StringPay.onFrameLoad = () => { 
+		StringPay.onFrameLoad = () => {
 			isFrameLoaded = true;
-		}
+		};
 
 		StringPay.onFrameClose = () => {
 			isFrameLoaded = false;
-		}
+		};
 	});
 
 	$: {
@@ -57,34 +57,32 @@
 				chainID: currentItem.chainID,
 				userAddress: $signerAddress,
 				contractAddress: currentItem.address,
-				contractFunction: "mintTo(address)",
-				contractReturn: "uint256",
+				contractFunction: 'mintTo(address)',
+				contractReturn: 'uint256',
 				contractParameters: [$signerAddress],
-				txValue: "0.08 eth"
-			}
-
+				txValue: '0.08 eth'
+			};
 		}
 	}
-
 </script>
 
 <svelte:head>
-	<title>String Demo | {item?.name ?? "NFT"}</title>
+	<title>String Demo | {item?.name ?? 'NFT'}</title>
 </svelte:head>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="backdrop" class:!hidden='{!isFrameLoaded}' on:click|stopPropagation>
+<div class="backdrop" class:!hidden={!isFrameLoaded} on:click|stopPropagation>
 	<div class="string-pay-frame flex justify-center w-full" />
 </div>
 
 {#if item}
 	<div class="container flex m-auto mt-4 main">
-		<img class="showcase" src={item.imageSrc} alt={item.imageAlt}>
+		<img class="showcase" src={item.imageSrc} alt={item.imageAlt} />
 		<div class="my-4">
 			<p class="text-primary text-lg font-bold">{item.collection}</p>
 			<p class="text-black text-3xl font-bold mb-4">{item.name}</p>
 			<p class="mb-4">{item.description}</p>
-			<p class="text-bold text-xl mb-4"><Price {item}/></p>
+			<p class="text-bold text-xl mb-4"><Price {item} /></p>
 
 			{#if payload}
 				<StringPayButton {payload} />
@@ -103,7 +101,7 @@
 		align-items: center;
 		justify-content: center;
 	}
-	
+
 	.showcase {
 		margin-left: 20px;
 		margin-right: 128px;
@@ -124,11 +122,10 @@
 		.container {
 			flex-flow: wrap;
 			align-items: center;
-			justify-content: center
+			justify-content: center;
 		}
 		.showcase {
 			margin: auto;
 		}
 	}
-
 </style>

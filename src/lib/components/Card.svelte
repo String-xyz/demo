@@ -1,10 +1,10 @@
-<script lang='ts'>
+<script lang="ts">
 	import type { CollectionData, NFT } from '$lib/common/types';
 	import Price from '$lib/components/Price.svelte';
 
 	export let item: NFT | CollectionData;
 
-	let nftImage = "ownedURL" in item ? item.ownedURL : item.imageSrc;
+	let nftImage = 'ownedURL' in item ? item.ownedURL : item.imageSrc;
 </script>
 
 <div class="card w-80 bg-base-100 shadow-xl">

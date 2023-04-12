@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { connected } from 'svelte-ethers-store'
+	import { connected } from 'svelte-ethers-store';
 
-	import { activeTab } from '$lib/stores'
+	import { activeTab } from '$lib/stores';
 	import { getCollection } from '$lib/services/nft.service';
 
 	import Spinner from '$lib/components/Spinner.svelte';
@@ -11,7 +11,6 @@
 	onMount(() => {
 		activeTab.set(1);
 	});
-
 </script>
 
 <svelte:head>
@@ -23,7 +22,7 @@
 	<div class="ml-10 mb-6">
 		<p>View your NFTs</p>
 	</div>
-	
+
 	<div class="grid showcase gap-3 p-10">
 		{#if $connected}
 			{#await getCollection()}
@@ -50,7 +49,7 @@
 			<div class="m-auto">
 				<div class="card bg-base-100 shadow-xl">
 					<div class="card-body">
-					  <h2 class="card-title">Please connect your wallet</h2>
+						<h2 class="card-title">Please connect your wallet</h2>
 					</div>
 				</div>
 			</div>
@@ -83,7 +82,7 @@
 			grid-template-columns: repeat(3, minmax(250px, 1fr));
 		}
 	}
-	
+
 	@media (max-width: 1100px) {
 		.showcase {
 			grid-template-columns: repeat(2, minmax(250px, 1fr));
@@ -98,5 +97,4 @@
 			padding-right: 0;
 		}
 	}
-
 </style>

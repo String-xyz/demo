@@ -7,16 +7,15 @@
 
 	const connect = async () => {
 		await defaultEvmStores.setProvider();
-	}
+	};
 
 	const disconnect = async () => {
 		await defaultEvmStores.disconnect();
-	}
+	};
 
 	onMount(async () => {
 		await connect();
 	});
-
 </script>
 
 <div class="mx-auto h-screen text-neutral">
@@ -24,7 +23,7 @@
 		<div class="w-full navbar justify-between bg-white text-dark-content border-base-300">
 			<div class="flex-1 px-2 mx-2">
 				<a class="btn btn-ghost btn-lg rounded-btn text-primary" href="/">
-					<img src="/assets/string_logo.svg" width='100px' height='20px' alt="String">
+					<img src="/assets/string_logo.svg" width="100px" height="20px" alt="String" />
 				</a>
 			</div>
 
@@ -41,8 +40,8 @@
 			</div>
 		</div>
 		<div class="tabs ml-10">
-			<a class="tab tab-bordered" class:tab-active="{$activeTab == 0}" href="/">Explore</a> 
-			<a class="tab tab-bordered" class:tab-active="{$activeTab == 1}" href="/nfts/collection">My Collection</a> 
+			<a class="tab tab-bordered" class:tab-active={$activeTab == 0} href="/">Explore</a>
+			<a class="tab tab-bordered" class:tab-active={$activeTab == 1} href="/nfts/collection">My Collection</a>
 		</div>
 		<div class="divider mt-0" />
 		<slot />
@@ -68,6 +67,4 @@
 			margin-bottom: 16px;
 		}
 	}
-
 </style>
-
