@@ -61,7 +61,7 @@ export const getCollection = async (): Promise<CollectionData[]> => {
 	const account = getStore(signerAddress);
 
 	for (const nft of nfts) {
-		const chainData = networks.find((data) => data.chainId == nft.chainID);
+		const chainData = networks.find((data) => data.chainId == nft.chainId);
 		if (!chainData) return _collection;
 
 		if (!chainData.provider) {

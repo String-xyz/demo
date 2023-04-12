@@ -3,7 +3,7 @@ import type { Contract } from 'ethers';
 export interface NFT {
 	id: number;
 	address: string;
-	chainID: number;
+	chainId: number;
 	price: number;
 	currency: string;
 	name: string;

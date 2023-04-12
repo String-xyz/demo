@@ -54,7 +54,7 @@
 				currency: currentItem.currency,
 				price: currentItem.price,
 				imageSrc: currentItem.imageSrc,
-				chainID: currentItem.chainID,
+				chainID: currentItem.chainId,
 				userAddress: $signerAddress,
 				contractAddress: currentItem.address,
 				contractFunction: 'mintTo(address)',
