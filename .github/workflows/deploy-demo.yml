@@ -26,10 +26,8 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.3
         with:
           envkey_VITE_ENV: ${{ secrets.DEMO_ENV }}
-          envkey_VITE_API_BASE_PATH: ${{ secrets.DEMO_PUBLIC_BASE_PATH }}
-          envkey_VITE_CHECKOUT_PUBLIC_KEY: ${{ secrets.DEMO_CHECKOUT_PUBLIC_KEY }}
           envkey_VITE_IPFS_GATEWAY: ${{ secrets.IPFS_GATEWAY }}
-          envkey_VITE_IPFS_HASH: ${{ secrets.IPFS_HASH }}
+          envkey_VITE_IPFS_CID: ${{ secrets.IPFS_CID }}
 
           filename: .env
           directory: ./

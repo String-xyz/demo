@@ -14,7 +14,7 @@
 	let item = getNFTById(data.id);
 
 	const STRING_API_KEY = import.meta.env.VITE_STRING_API_KEY;
-	const STRING_SDK_ENV = import.meta.env.VITE_STRING_SDK_ENV;
+	const STRING_SDK_ENV = import.meta.env.VITE_STRING_SDK_ENV || 'LOCAL';
 
 	let StringPay: StringPay;
 	let payload: StringPayload;
