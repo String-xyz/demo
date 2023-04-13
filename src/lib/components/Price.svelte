@@ -1,11 +1,17 @@
-<script lang='ts'>
-	import type { NFT } from "$lib/stores";
-	export let item: NFT;
+<script lang="ts">
+	import type { CollectionData, NFT } from '$lib/common/types';
+	export let item: NFT | CollectionData;
 </script>
 
-<img class="token-logo" src={`/assets/tokens/${item.currency}.svg`} alt={item.currency + " Logo"} />
-<span>{item.price}</span>
-<span class="text-black">{item.currency || 'AVAX'}</span>
+<div class="text-black font-medium">
+	<img
+		class="token-logo"
+		src={`/assets/tokens/${item.currency}.svg`}
+		alt={item.currency + ' Logo'}
+	/>
+	<span>{item.price}</span>
+	<span>{item.currency || 'AVAX'}</span>
+</div>
 
 <style>
 	.token-logo {

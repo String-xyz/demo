@@ -14,5 +14,3 @@ Go to http://localhost:3000:
 
 - Test that the iframe appears when you press the mint with card button and you are connected with your wallet 
 - Test that My Collection works
-
-
