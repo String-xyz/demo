@@ -27,7 +27,7 @@ const NFT_DATA: NFT[] = [
 		address: '0xea1ffe2cf6630a20e1ba397e95358daf362c8781',
 		chainId: 43113,
 		currency: 'AVAX',
-		name: 'String Test NFT [AVAX]',
+		assetName: 'String Test NFT [AVAX]',
 		...COMMON_PROPS
 	},
 	{
@@ -35,7 +35,7 @@ const NFT_DATA: NFT[] = [
 		address: '0x8e545d0FFA293F328f5A9D1b09c58158105aD13B',
 		chainId: 5,
 		currency: 'ETH',
-		name: 'String Test NFT [ETH]',
+		assetName: 'String Test NFT [ETH]',
 		...COMMON_PROPS
 	},
 	{
@@ -43,7 +43,7 @@ const NFT_DATA: NFT[] = [
 		address: '0xf0F6D94757235a3d6347B366AeE76A3C84D21392',
 		chainId: 80001,
 		currency: 'MATIC',
-		name: 'String Test NFT [POLYGON]',
+		assetName: 'String Test NFT [POLYGON]',
 		...COMMON_PROPS
 	}
 ];

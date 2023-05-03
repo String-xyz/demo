@@ -14,7 +14,7 @@
 			{item.collection}
 		</p>
 		<h2 class="card-title">
-			{item.name}
+			{item.assetName}
 		</h2>
 		<p class="text-sm font-medium">
 			<Price {item} />
