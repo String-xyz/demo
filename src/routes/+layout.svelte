@@ -6,7 +6,11 @@
 	import { activeTab } from '$lib/stores';
 
 	const connect = async () => {
-		await defaultEvmStores.setProvider();
+		try {
+			await defaultEvmStores.setProvider();
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const disconnect = async () => {
@@ -28,7 +32,7 @@
 			</div>
 
 			<div class="px-2 mx-2">
-				{#if $connected}
+				{#if $connected && $signerAddress}
 					<button class="btn btn-outline btn-sm rounded-btn btn-secondary" on:click={disconnect}>
 						{$signerAddress.substring(0, 10) + '...'}
 					</button>

@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { toast } from '$lib/stores';
+	import { connected } from 'svelte-ethers-store';
+
 	import type { StringPay, StringPayload } from '@stringpay/sdk';
 
 	export let payload: StringPayload;
@@ -7,10 +10,11 @@
 	let StringPay: StringPay;
 
 	onMount(() => {
-		StringPay = (<any>window).StringPay;
+		StringPay = window.StringPay;
 	});
 
 	const init = (payload: StringPayload) => {
+		if (!$connected) $toast.show('Please connect your wallet');
 		StringPay?.loadFrame(payload);
 	};
 </script>
@@ -19,5 +23,5 @@
 	class="btn btn-primary rounded border-2 tracking-wider text-white h-11"
 	on:click={() => init(payload)}
 >
-	Mint with Card
+	Buy with Card
 </button>
