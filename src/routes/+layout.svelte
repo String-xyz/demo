@@ -3,7 +3,10 @@
 
 	import { onMount } from 'svelte';
 	import { defaultEvmStores, connected, signerAddress } from 'svelte-ethers-store';
-	import { activeTab } from '$lib/stores';
+	import { activeTab, stringSdkEnv } from '$lib/stores';
+	import { capitalize } from '$lib/common/utils';
+
+	let envToggle = false;
 
 	const connect = async () => {
 		await defaultEvmStores.setProvider();
@@ -16,6 +19,12 @@
 	onMount(async () => {
 		await connect();
 	});
+
+	const switchEnv = () => {
+		envToggle = !envToggle;
+		stringSdkEnv.set(envToggle ? 'PROD' : 'SANDBOX');
+	}
+
 </script>
 
 <div class="mx-auto h-screen text-neutral">
@@ -25,6 +34,11 @@
 				<a class="btn btn-ghost btn-lg rounded-btn text-primary" href="/">
 					<img src="/assets/string_logo.svg" width="100px" height="20px" alt="String" />
 				</a>
+			</div>
+
+			<div class="text-sm font-medium mr-2">
+				<span class="mr-2">Using <span class="">{capitalize($stringSdkEnv)}</span> mode</span>
+				<input type="checkbox" class="toggle" bind:checked={envToggle} on:click={switchEnv} />
 			</div>
 
 			<div class="px-2 mx-2">

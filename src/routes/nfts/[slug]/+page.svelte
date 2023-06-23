@@ -5,6 +5,7 @@
 	import type { StringPay, StringPayload } from '@stringpay/sdk';
 
 	import { getNFTById } from '$lib/services/nft.service';
+	import { stringSdkEnv } from '$lib/stores';
 
 	import StringPayButton from '$lib/components/StringPayButton.svelte';
 	import Price from '$lib/components/Price.svelte';
@@ -14,7 +15,6 @@
 	let item = getNFTById(data.id);
 
 	const STRING_API_KEY = import.meta.env.VITE_STRING_API_KEY;
-	const STRING_SDK_ENV = import.meta.env.VITE_STRING_SDK_ENV || 'LOCAL';
 
 	let StringPay: StringPay;
 	let payload: StringPayload;
@@ -32,7 +32,7 @@
 		}
 
 		StringPay.init({
-			env: STRING_SDK_ENV,
+			env: $stringSdkEnv,
 			publicKey: STRING_API_KEY
 		});
 
@@ -49,10 +49,10 @@
 		const currentItem = item;
 		if (currentItem) {
 			payload = {
-				name: currentItem.name,
+				assetName: currentItem.assetName,
 				collection: currentItem.collection,
-				currency: currentItem.currency,
 				price: currentItem.price,
+				currency: currentItem.currency,
 				imageSrc: currentItem.imageSrc,
 				chainID: currentItem.chainId,
 				userAddress: $signerAddress,
@@ -67,7 +67,7 @@
 </script>
 
 <svelte:head>
-	<title>String Demo | {item?.name ?? 'NFT'}</title>
+	<title>String Demo | {item?.assetName ?? 'NFT'}</title>
 </svelte:head>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -80,7 +80,7 @@
 		<img class="showcase" src={item.imageSrc} alt={item.imageAlt} />
 		<div class="my-4">
 			<p class="text-primary text-lg font-bold">{item.collection}</p>
-			<p class="text-black text-3xl font-bold mb-4">{item.name}</p>
+			<p class="text-black text-3xl font-bold mb-4">{item.assetName}</p>
 			<p class="mb-4">{item.description}</p>
 			<p class="text-bold text-xl mb-4"><Price {item} /></p>
 

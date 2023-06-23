@@ -6,7 +6,7 @@ export interface NFT {
 	chainId: number;
 	price: number;
 	currency: string;
-	name: string;
+	assetName: string;
 	description: string;
 	collection: string;
 	imageSrc: string;
