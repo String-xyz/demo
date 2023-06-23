@@ -3,8 +3,9 @@
 
 	import { onMount } from 'svelte';
 	import { defaultEvmStores, connected, signerAddress } from 'svelte-ethers-store';
-	import { activeTab, stringSdkEnv } from '$lib/stores';
+	import { activeTab, stringSdkEnv, stringSdkPublicKey } from '$lib/stores';
 	import { capitalize } from '$lib/common/utils';
+	import config from '$lib/config';
 
 	let envToggle = false;
 
@@ -23,6 +24,7 @@
 	const switchEnv = () => {
 		envToggle = !envToggle;
 		stringSdkEnv.set(envToggle ? 'PROD' : 'SANDBOX');
+		stringSdkPublicKey.set(envToggle ? config.PROD_API_KEY : config.SBOX_API_KEY);
 	}
 
 </script>

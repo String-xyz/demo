@@ -5,7 +5,7 @@
 	import type { StringPay, StringPayload } from '@stringpay/sdk';
 
 	import { getNFTById } from '$lib/services/nft.service';
-	import { stringSdkEnv } from '$lib/stores';
+	import { stringSdkEnv, stringSdkPublicKey } from '$lib/stores';
 
 	import StringPayButton from '$lib/components/StringPayButton.svelte';
 	import Price from '$lib/components/Price.svelte';
@@ -13,8 +13,6 @@
 	export let data: PageData;
 
 	let item = getNFTById(data.id);
-
-	const STRING_API_KEY = import.meta.env.VITE_STRING_API_KEY;
 
 	let StringPay: StringPay;
 	let payload: StringPayload;
@@ -33,7 +31,7 @@
 
 		StringPay.init({
 			env: $stringSdkEnv,
-			publicKey: STRING_API_KEY
+			publicKey: $stringSdkPublicKey
 		});
 
 		StringPay.onFrameLoad = () => {

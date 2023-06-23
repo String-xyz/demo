@@ -1,8 +1,8 @@
+import config from '$lib/config';
 import type { NFT } from '$lib/common/types';
 
-const IPFS_GATEWAY = import.meta.env.VITE_IPFS_GATEWAY;
-
-const IPFS_CID = import.meta.env.VITE_IPFS_CID;
+const IPFS_GATEWAY = config.IPFS_GATEWAY;
+const IPFS_CID = config.IPFS_CID;
 
 const getIpfsLink = (file: string) => {
 	// nftstorage gateway
@@ -14,7 +14,7 @@ const getIpfsLink = (file: string) => {
 };
 
 const COMMON_PROPS = {
-	price: 0.08,
+	price: "0.08",
 	description: 'The String demo NFT. Get a different character each time.',
 	collection: 'String Demo',
 	imageSrc: getIpfsLink('Demo_Character_1.png'),
@@ -45,6 +45,15 @@ const NFT_DATA: NFT[] = [
 		currency: 'MATIC',
 		assetName: 'String Test NFT [POLYGON]',
 		...COMMON_PROPS
+	},
+	{
+		id: 4,
+		address: '0xFFa8cc8530982A64Ef0E3e97554A4581b4Cd6314',
+		chainId: 421613,
+		currency: 'ETH',
+		assetName: 'String Test NFT (ARBITRUM)',
+		...COMMON_PROPS,
+		price: "0",
 	},
 ];
 

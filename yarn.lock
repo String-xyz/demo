@@ -592,9 +592,9 @@
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
 "@stringpay/sdk@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@stringpay/sdk/-/sdk-0.2.0.tgz#011f7a396bf2399911c914cc58042a89a879a7b7"
-  integrity sha512-vFVM/8L4VoQKTqd1iVfzNU/TVtRg+51hI9zWBkNXvXl/he2oh/9ZZ1HBvfzYRVO99TMpePQEsWhihUUrUZtYBA==
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@stringpay/sdk/-/sdk-0.2.2.tgz#a56f31b671c8173562ef1a80628022f87d0bc40c"
+  integrity sha512-d/Cxr8XdwTbkaA7bC0ilUfMu1lpq9da1WSZW7cU/bj2CmzZq9NNDui0pWnrnUkzZWe8THqI4UhRlu3oyYVyGKg==
 
 "@sveltejs/adapter-auto@^2.0.0":
   version "2.0.0"

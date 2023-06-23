@@ -24,9 +24,12 @@
 		</p>
 		<p>
 			Test it out by minting an NFT with your credit card! Connect your wallet, select an NFT on
-			your test network of choice (Ethereum, Avalanche, or Polygon), and checkout. Enter 4242 4242
+			your test network of choice (Ethereum, Avalanche, Polygon, or Arbitrum), and checkout. Enter 4242 4242
 			4242 4242 as the card number, any future date for the expiration, and any 3-digit number for
 			the CVV.
+		</p>
+		<p class="mt-1">
+			You can also test our service with a real credit card by going into production mode with the toggle at the top right. But please note that you will have to contact support to refund your purchase.
 		</p>
 	</div>
 

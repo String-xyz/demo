@@ -4,7 +4,7 @@ export interface NFT {
 	id: number;
 	address: string;
 	chainId: number;
-	price: number;
+	price: string;
 	currency: string;
 	assetName: string;
 	description: string;
