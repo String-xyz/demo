@@ -1,2 +1,3 @@
 export * from './tabs';
-export * from './env';
+export * from './string_env';
+export * from './modal';

@@ -38,6 +38,12 @@ const networks: ChainData[] = [
 		RPC_URL: 'https://matic-mumbai.chainstacklabs.com',
 		explorer: 'https://mumbai.polygonscan.com/tx/',
 		provider: undefined
+	},
+	{
+		chainId: 421613,
+		RPC_URL: 'https://goerli-rollup.arbitrum.io/rpc',
+		explorer: 'https://goerli.arbiscan.io',
+		provider: undefined
 	}
 ];
 

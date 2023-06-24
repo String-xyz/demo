@@ -4,7 +4,7 @@
 	import type { PageData } from './$types';
 	import type { StringPay, StringPayload } from '@stringpay/sdk';
 
-	import { getNFTById } from '$lib/services/nft.service';
+	import { getNFTById } from '$lib/services';
 	import { stringSdkEnv, stringSdkPublicKey } from '$lib/stores';
 
 	import StringPayButton from '$lib/components/StringPayButton.svelte';
@@ -32,6 +32,15 @@
 		StringPay.init({
 			env: $stringSdkEnv,
 			publicKey: $stringSdkPublicKey
+		});
+
+		stringSdkEnv.subscribe((env) => {
+			if (StringPay) {
+				StringPay.init({
+					env,
+					publicKey: $stringSdkPublicKey
+				});
+			}
 		});
 
 		StringPay.onFrameLoad = () => {
@@ -70,7 +79,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="backdrop" class:!hidden={!isFrameLoaded} on:click|stopPropagation>
-	<div class="string-pay-frame flex justify-center w-full" />
+	<div class="string-pay-frame flex justify-center pt-14 w-full" />
 </div>
 
 {#if item}

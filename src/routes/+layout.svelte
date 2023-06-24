@@ -3,11 +3,20 @@
 
 	import { onMount } from 'svelte';
 	import { defaultEvmStores, connected, signerAddress } from 'svelte-ethers-store';
-	import { activeTab, stringSdkEnv, stringSdkPublicKey } from '$lib/stores';
+	import { activeTab, prodWarningModalOpen, stringSdkEnv, stringSdkPublicKey } from '$lib/stores';
 	import { capitalize } from '$lib/common/utils';
 	import config from '$lib/config';
+	import ProdWarning from '$lib/components/ProdWarning.svelte';
 
 	let envToggle = false;
+
+	let toggleElem: HTMLInputElement;
+
+	// The toggle will switch between different envs based on the USE_LOCAL flag
+	const defaultEnv = config.USE_LOCAL ? 'LOCAL' : 'SANDBOX';
+	const toggledEnv = config.USE_LOCAL ? 'SANDBOX' : 'PROD';
+	const defaultKey = config.USE_LOCAL ? config.LOCAL_API_KEY : config.SBOX_API_KEY;
+	const toggledKey = config.USE_LOCAL ? config.SBOX_API_KEY : config.PROD_API_KEY;
 
 	const connect = async () => {
 		await defaultEvmStores.setProvider();
@@ -23,8 +32,16 @@
 
 	const switchEnv = () => {
 		envToggle = !envToggle;
-		stringSdkEnv.set(envToggle ? 'PROD' : 'SANDBOX');
-		stringSdkPublicKey.set(envToggle ? config.PROD_API_KEY : config.SBOX_API_KEY);
+
+		if (envToggle && toggledEnv === 'PROD') {
+			$prodWarningModalOpen = true;
+		}
+
+		const envToUse = envToggle ? toggledEnv : defaultEnv;
+		const keyToUse = envToggle ? toggledKey : defaultKey;
+
+		stringSdkEnv.set(envToUse);
+		stringSdkPublicKey.set(keyToUse);
 	}
 
 </script>
@@ -40,7 +57,7 @@
 
 			<div class="text-sm font-medium mr-2">
 				<span class="mr-2">Using <span class="">{capitalize($stringSdkEnv)}</span> mode</span>
-				<input type="checkbox" class="toggle" bind:checked={envToggle} on:click={switchEnv} />
+				<input type="checkbox" class="toggle" bind:this={toggleElem} bind:checked={envToggle} on:click={switchEnv} />
 			</div>
 
 			<div class="px-2 mx-2">
@@ -62,6 +79,8 @@
 		<div class="divider mt-0" />
 		<slot />
 	</div>
+
+	<ProdWarning />
 </div>
 
 <style lang="postcss">
