@@ -6,11 +6,10 @@
 	import { activeTab, prodWarningModalOpen, stringSdkEnv, stringSdkPublicKey } from '$lib/stores';
 	import { capitalize } from '$lib/common/utils';
 	import config from '$lib/config';
+
 	import ProdWarning from '$lib/components/ProdWarning.svelte';
 
 	let envToggle = false;
-
-	let toggleElem: HTMLInputElement;
 
 	// The toggle will switch between different envs based on the USE_LOCAL flag
 	const defaultEnv = config.USE_LOCAL ? 'LOCAL' : 'SANDBOX';
@@ -57,7 +56,7 @@
 
 			<div class="text-sm font-medium mr-2">
 				<span class="mr-2">Using <span class="">{capitalize($stringSdkEnv)}</span> mode</span>
-				<input type="checkbox" class="toggle" bind:this={toggleElem} bind:checked={envToggle} on:click={switchEnv} />
+				<input type="checkbox" class="toggle" bind:checked={envToggle} on:click={switchEnv} />
 			</div>
 
 			<div class="px-2 mx-2">

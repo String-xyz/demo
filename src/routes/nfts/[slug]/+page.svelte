@@ -67,7 +67,7 @@
 				contractFunction: 'mintTo(address)',
 				contractReturn: 'uint256',
 				contractParameters: [$signerAddress],
-				txValue: '0.08 eth'
+				txValue: `${currentItem.price} eth`
 			};
 		}
 	}
