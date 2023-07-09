@@ -1,4 +1,3 @@
-// Vite will error if any env var is missing
 const config = {
 	ENV: import.meta.env.VITE_ENV,
 	USE_LOCAL: import.meta.env.VITE_STRING_USE_LOCAL === 'true',
