@@ -16,8 +16,8 @@
 </svelte:head>
 
 <div class="flex flex-col w-full p-10 main">
-	<h2 class="text-4xl font-extrabold pb-10">Mint an NFT With Your Credit Card</h2>
-	<div class="mb-10">
+	<div class="mb-10 billboard">
+		<h2 class="text-4xl font-extrabold pb-10">Mint an NFT With Your Credit Card</h2>
 		<p class="mb-4">
 			Integrating with String allows Web3 platforms to enable their users to initiate any on-chain
 			activity directly with their credit/debit card, without ever leaving their platform’s experience.
@@ -78,5 +78,11 @@
 			padding-left: 0;
 			padding-right: 0;
 		}
+
+		.billboard {
+			padding-left: 40px;
+			padding-right: 40px;
+		}
 	}
+
 </style>

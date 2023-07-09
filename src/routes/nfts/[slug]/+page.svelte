@@ -85,7 +85,7 @@
 {#if item}
 	<div class="container flex m-auto mt-4 main">
 		<img class="showcase" src={item.imageSrc} alt={item.imageAlt} />
-		<div class="my-4">
+		<div class="my-4 info">
 			<p class="text-primary text-lg font-bold">{item.collection}</p>
 			<p class="text-black text-3xl font-bold mb-4">{item.assetName}</p>
 			<p class="mb-4">{item.description}</p>
@@ -131,8 +131,14 @@
 			align-items: center;
 			justify-content: center;
 		}
+
 		.showcase {
 			margin: auto;
 		}
+
+		.info {
+			max-width: 400px;
+		}
 	}
+
 </style>

@@ -54,7 +54,7 @@
 				</a>
 			</div>
 
-			<div class="text-sm font-medium mr-2">
+			<div id="env-toggle" class="text-sm font-medium mr-2">
 				<span class="mr-2">Using <span class="">{capitalize($stringSdkEnv)}</span> mode</span>
 				<input type="checkbox" class="toggle" bind:checked={envToggle} on:click={switchEnv} />
 			</div>
@@ -95,9 +95,13 @@
 		height: 1px;
 	}
 
-	@media (max-width: 400px) {
+	@media (max-width: 600px) {
 		.navbar {
 			flex-direction: column;
+			margin-bottom: 16px;
+		}
+
+		#env-toggle {
 			margin-bottom: 16px;
 		}
 	}
