@@ -16,17 +16,20 @@
 </svelte:head>
 
 <div class="flex flex-col w-full p-10 main">
-	<h2 class="text-4xl font-extrabold pb-10">Mint an NFT With Your Credit Card</h2>
-	<div class="mb-10">
+	<div class="mb-10 billboard">
+		<h2 class="text-4xl font-extrabold pb-10">Mint an NFT With Your Credit Card</h2>
 		<p class="mb-4">
 			Integrating with String allows Web3 platforms to enable their users to initiate any on-chain
-			activity directly with their credit card, without ever leaving their platform’s experience.
+			activity directly with their credit/debit card, without ever leaving their platform’s experience.
 		</p>
 		<p>
 			Test it out by minting an NFT with your credit card! Connect your wallet, select an NFT on
-			your test network of choice (Ethereum, Avalanche, or Polygon), and checkout. Enter 4242 4242
+			your test network of choice (Avalanche, Ethereum, Polygon, or Arbitrum), and checkout. Enter 4242 4242
 			4242 4242 as the card number, any future date for the expiration, and any 3-digit number for
-			the CVV.
+			the CVV. See which character you minted by navigating to the My Collection page and let us know what you think!
+		</p>
+		<p class="mt-1">
+			You can also test our service with a real credit card by going into production mode with the toggle at the top right. But please note that you will have to contact support to refund your purchase.
 		</p>
 	</div>
 
@@ -75,5 +78,11 @@
 			padding-left: 0;
 			padding-right: 0;
 		}
+
+		.billboard {
+			padding-left: 40px;
+			padding-right: 40px;
+		}
 	}
+
 </style>

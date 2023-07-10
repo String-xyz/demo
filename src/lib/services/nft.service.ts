@@ -2,10 +2,11 @@ import { get as getStore } from 'svelte/store';
 import { signerAddress } from 'svelte-ethers-store';
 import { ethers, type BigNumber } from 'ethers';
 
-import type { CollectionData, NFT } from '$lib/common/types';
+import config from '$lib/config';
 import { getNFTs } from '$lib/consts';
+import type { CollectionData, NFT } from '$lib/common/types';
 
-const IPFS_GATEWAY = import.meta.env.VITE_IPFS_GATEWAY;
+const IPFS_GATEWAY = config.IPFS_GATEWAY;
 
 const contractABI = [
 	'function getOwnedIDs(address owner) view returns (uint256[])',
@@ -36,6 +37,12 @@ const networks: ChainData[] = [
 		chainId: 80001,
 		RPC_URL: 'https://matic-mumbai.chainstacklabs.com',
 		explorer: 'https://mumbai.polygonscan.com/tx/',
+		provider: undefined
+	},
+	{
+		chainId: 421613,
+		RPC_URL: 'https://goerli-rollup.arbitrum.io/rpc',
+		explorer: 'https://goerli.arbiscan.io',
 		provider: undefined
 	}
 ];

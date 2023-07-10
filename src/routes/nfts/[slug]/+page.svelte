@@ -4,7 +4,8 @@
 	import type { PageData } from './$types';
 	import type { StringPay, StringPayload } from '@stringpay/sdk';
 
-	import { getNFTById } from '$lib/services/nft.service';
+	import { getNFTById } from '$lib/services';
+	import { stringSdkEnv, stringSdkPublicKey } from '$lib/stores';
 
 	import StringPayButton from '$lib/components/StringPayButton.svelte';
 	import Price from '$lib/components/Price.svelte';
@@ -12,9 +13,6 @@
 	export let data: PageData;
 
 	let item = getNFTById(data.id);
-
-	const STRING_API_KEY = import.meta.env.VITE_STRING_API_KEY;
-	const STRING_SDK_ENV = import.meta.env.VITE_STRING_SDK_ENV || 'LOCAL';
 
 	let StringPay: StringPay;
 	let payload: StringPayload;
@@ -32,8 +30,17 @@
 		}
 
 		StringPay.init({
-			env: STRING_SDK_ENV,
-			publicKey: STRING_API_KEY
+			env: $stringSdkEnv,
+			publicKey: $stringSdkPublicKey
+		});
+
+		stringSdkEnv.subscribe((env) => {
+			if (StringPay) {
+				StringPay.init({
+					env,
+					publicKey: $stringSdkPublicKey
+				});
+			}
 		});
 
 		StringPay.onFrameLoad = () => {
@@ -49,10 +56,10 @@
 		const currentItem = item;
 		if (currentItem) {
 			payload = {
-				name: currentItem.name,
+				assetName: currentItem.assetName,
 				collection: currentItem.collection,
-				currency: currentItem.currency,
 				price: currentItem.price,
+				currency: currentItem.currency,
 				imageSrc: currentItem.imageSrc,
 				chainID: currentItem.chainId,
 				userAddress: $signerAddress,
@@ -60,27 +67,27 @@
 				contractFunction: 'mintTo(address)',
 				contractReturn: 'uint256',
 				contractParameters: [$signerAddress],
-				txValue: '0.08 eth'
+				txValue: `${currentItem.price} eth`
 			};
 		}
 	}
 </script>
 
 <svelte:head>
-	<title>String Demo | {item?.name ?? 'NFT'}</title>
+	<title>String Demo | {item?.assetName ?? 'NFT'}</title>
 </svelte:head>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="backdrop" class:!hidden={!isFrameLoaded} on:click|stopPropagation>
-	<div class="string-pay-frame flex justify-center w-full" />
+	<div class="string-pay-frame flex justify-center pt-14 w-full" />
 </div>
 
 {#if item}
 	<div class="container flex m-auto mt-4 main">
 		<img class="showcase" src={item.imageSrc} alt={item.imageAlt} />
-		<div class="my-4">
+		<div class="my-4 info">
 			<p class="text-primary text-lg font-bold">{item.collection}</p>
-			<p class="text-black text-3xl font-bold mb-4">{item.name}</p>
+			<p class="text-black text-3xl font-bold mb-4">{item.assetName}</p>
 			<p class="mb-4">{item.description}</p>
 			<p class="text-bold text-xl mb-4"><Price {item} /></p>
 
@@ -124,8 +131,14 @@
 			align-items: center;
 			justify-content: center;
 		}
+
 		.showcase {
 			margin: auto;
 		}
+
+		.info {
+			max-width: 400px;
+		}
 	}
+
 </style>

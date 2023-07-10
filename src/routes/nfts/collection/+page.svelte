@@ -58,12 +58,6 @@
 </div>
 
 <style>
-	.item {
-		max-width: 200px;
-		max-height: 200px;
-		margin-top: 16px;
-	}
-
 	@media (max-width: 500px) {
 		.main {
 			margin-left: 16px;
