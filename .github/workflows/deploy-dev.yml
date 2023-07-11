@@ -7,7 +7,7 @@ on:
     branches: [develop]
 jobs:
   deploy:
-    environment: 
+    environment:
       name: development
       url: https://demo.dev.string-api.xyz
 
@@ -21,16 +21,14 @@ jobs:
         uses: actions/setup-node@v2.1.3
         with:
           node-version: 18.0.0
-          
+
       - name: generate env
         uses: SpicyPizza/create-envfile@v1.3
         with:
           envkey_VITE_ENV: ${{ secrets.DEV_ENV }}
-          envkey_VITE_API_BASE_PATH: ${{ secrets.DEV_PUBLIC_BASE_PATH  }}
-          envkey_VITE_CHECKOUT_PUBLIC_KEY: ${{ secrets.DEV_CHECKOUT_PUBLIC_KEY }}
           envkey_VITE_IPFS_GATEWAY: ${{ secrets.IPFS_GATEWAY }}
-          envkey_VITE_IPFS_HASH: ${{ secrets.IPFS_HASH }}
-          
+          envkey_VITE_IPFS_CID: ${{ secrets.IPFS_CID }}
+
           filename: .env
           directory: ./
 
@@ -48,7 +46,7 @@ jobs:
       - name: login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-  
+
       - name: build, tag and push to Amazon ECR
         env:
           ECR_REPO: ${{ secrets.ECR_URL }}

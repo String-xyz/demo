@@ -12,7 +12,7 @@ locals {
 
 variable "versioning" {
   type    = string
-  default = "latest"
+  default = "v1.0.6"
 }
 
 locals {

@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	daisyui: {
@@ -8,19 +9,13 @@ module.exports = {
 
 					secondary: '#F92572',
 
-					accent: '#37CDBE',
+					neutral: '#003669',
 
-					neutral: '#3D4451',
+					success: '#15E883',
 
-					'base-100': '#FFFFFF',
+					warning: '#FFEB84',
 
-					info: '#3ABFF8',
-
-					success: '#36D399',
-
-					warning: '#FBBD23',
-
-					error: '#F87272'
+					error: '#F92572'
 				}
 			}
 		]

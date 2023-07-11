@@ -1,48 +1,39 @@
 <script lang="ts">
-	import { activeTab, collection, connect, currentAccount, getOwnedIDs } from '$lib/stores'
 	import { onMount } from 'svelte';
-	import Price from '$lib/components/Price.svelte';
+	import { connected } from 'svelte-ethers-store';
+
+	import { activeTab } from '$lib/stores';
+	import { getCollection } from '$lib/services/nft.service';
+
 	import Spinner from '$lib/components/Spinner.svelte';
+	import Card from '$lib/components/Card.svelte';
 
 	onMount(() => {
 		activeTab.set(1);
-		connect();
 	});
 </script>
 
 <svelte:head>
-	<title>String Demo | Collection</title>
+	<title>My Collection | String Demo</title>
 </svelte:head>
 
 <div class="flex flex-col w-full main">
-	<h2 class="text-4xl font-extrabold ml-10 my-8">My Collection</h2>
+	<h2 class="text-3xl font-extrabold ml-10 my-8">My Collection</h2>
 	<div class="ml-10 mb-6">
 		<p>View your NFTs</p>
 	</div>
-	
+
 	<div class="grid showcase gap-3 p-10">
-		{#if $currentAccount}
-			{#await getOwnedIDs() }
+		{#if $connected}
+			{#await getCollection()}
 				<div class="m-auto">
 					<Spinner />
 				</div>
-			{:then}
-				{#each $collection as owned}
-					<div class="card bg-base-100 shadow-xl">
-						<figure><img class="item" src={owned.ownedURL} alt={owned.nft.imageAlt} /></figure>
-						<div class="card-body">
-							<p class="text-sm font-medium text-primary">{owned.nft.collection}</p>
-							<h2 class="card-title">
-								<span aria-hidden="true" class="absolute inset-0" />
-								{owned.nft.name}
-							</h2>
-							<p class="text-sm font-medium text-gray-900 mt-4">
-								<Price item={owned.nft} />
-							</p>
-						</div>
-					</div>
+			{:then collection}
+				{#each collection as item}
+					<Card {item} />
 				{/each}
-				{#if $collection.length == 0}
+				{#if collection.length == 0}
 					<div class="m-auto">
 						<div class="card bg-base-100 shadow-xl">
 							<div class="card-body">
@@ -58,7 +49,7 @@
 			<div class="m-auto">
 				<div class="card bg-base-100 shadow-xl">
 					<div class="card-body">
-					  <h2 class="card-title">Please connect your wallet</h2>
+						<h2 class="card-title">Please connect your wallet</h2>
 					</div>
 				</div>
 			</div>
@@ -67,12 +58,6 @@
 </div>
 
 <style>
-	.item {
-		max-width: 200px;
-		max-height: 200px;
-		margin-top: 16px;
-	}
-
 	@media (max-width: 500px) {
 		.main {
 			margin-left: 16px;
@@ -83,26 +68,27 @@
 
 	.showcase {
 		grid-template-columns: repeat(4, minmax(250px, 1fr));
-		overflow: auto;
-		max-height: 90vh;
+		row-gap: 3rem;
 	}
 
-	@media (max-width: 1100px) {
+	@media (max-width: 1400px) {
 		.showcase {
 			grid-template-columns: repeat(3, minmax(250px, 1fr));
 		}
 	}
-	
-	@media (max-width: 830px) {
+
+	@media (max-width: 1100px) {
 		.showcase {
 			grid-template-columns: repeat(2, minmax(250px, 1fr));
 		}
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 800px) {
 		.showcase {
 			grid-template-columns: repeat(1, minmax(250px, 1fr));
+			align-self: center;
+			padding-left: 0;
+			padding-right: 0;
 		}
 	}
-
 </style>

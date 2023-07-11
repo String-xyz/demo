@@ -1,18 +1,15 @@
 FROM node:18.0 as build
 
-# install dependencies
-COPY package.json yarn.lock ./
-COPY vite.config.js ./
-# Copy all local files into the image.
 COPY . ./
+
+# install dependencies
 RUN yarn
-RUN npm run build
-###
-# Only copy over the Node pieces we need
-# ~> Saves 35MB
-###
+
+RUN yarn run build
+
 FROM node:17.0-slim
 
+#TODO copy only the necessary files
 WORKDIR /app
 COPY --from=build . ./
 

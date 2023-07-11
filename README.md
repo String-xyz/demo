@@ -7,10 +7,10 @@ Install dependencies:
 
 Fill .env:
 - Run an up to date on develop version of the api
-- Generate and validate string API key
+- Generate string API key
+- Set SDK env (can be PROD, SANDBOX, DEV, LOCAL)
 
 Go to http://localhost:3000:
 
 - Test that the iframe appears when you press the mint with card button and you are connected with your wallet 
 - Test that My Collection works
-
