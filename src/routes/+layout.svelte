@@ -30,8 +30,6 @@
 	});
 
 	const switchEnv = () => {
-		envToggle = !envToggle;
-
 		if (envToggle && toggledEnv === 'PROD') {
 			$prodWarningModalOpen = true;
 		}
@@ -56,7 +54,7 @@
 
 			<div id="env-toggle" class="text-sm font-medium mr-2">
 				<span class="mr-2">Using <span class="">{capitalize($stringSdkEnv)}</span> mode</span>
-				<input type="checkbox" class="toggle" bind:checked={envToggle} on:click={switchEnv} />
+				<input type="checkbox" class="toggle" bind:checked={envToggle} on:change={switchEnv} />
 			</div>
 
 			<div class="px-2 mx-2">

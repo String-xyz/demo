@@ -34,11 +34,11 @@
 			publicKey: $stringSdkPublicKey
 		});
 
-		stringSdkEnv.subscribe((env) => {
+		stringSdkPublicKey.subscribe((key) => {
 			if (StringPay) {
 				StringPay.init({
-					env,
-					publicKey: $stringSdkPublicKey
+					env: $stringSdkEnv,
+					publicKey: key
 				});
 			}
 		});
