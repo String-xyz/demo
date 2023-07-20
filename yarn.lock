@@ -636,13 +636,6 @@
   resolved "https://registry.npmjs.org/@stringpay/sdk/-/sdk-0.2.2.tgz"
   integrity sha512-d/Cxr8XdwTbkaA7bC0ilUfMu1lpq9da1WSZW7cU/bj2CmzZq9NNDui0pWnrnUkzZWe8THqI4UhRlu3oyYVyGKg==
 
-"@sveltejs/adapter-auto@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@sveltejs/adapter-auto/-/adapter-auto-2.0.0.tgz"
-  integrity sha512-b+gkHFZgD771kgV3aO4avHFd7y1zhmMYy9i6xOK7m/rwmwaRO8gnF5zBc0Rgca80B2PMU1bKNxyBTHA14OzUAQ==
-  dependencies:
-    import-meta-resolve "^2.2.0"
-
 "@sveltejs/adapter-node@^1.3.1":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-node/-/adapter-node-1.3.1.tgz#b3d8dee1ae09d008b2add093e84cf085f3333bbc"
@@ -1993,11 +1986,6 @@ import-fresh@^3.0.0, import-fresh@^3.2.1:
   dependencies:
     parent-module "^1.0.0"
     resolve-from "^4.0.0"
-
-import-meta-resolve@^2.2.0:
-  version "2.2.2"
-  resolved "https://registry.npmjs.org/import-meta-resolve/-/import-meta-resolve-2.2.2.tgz"
-  integrity sha512-f8KcQ1D80V7RnqVm+/lirO9zkOxjGxhaTC1IPrBGd3MEfNgmNG67tSUO9gTi2F3Blr2Az6g1vocaxzkVnWl9MA==
 
 imurmurhash@^0.1.4:
   version "0.1.4"
