@@ -79,8 +79,6 @@ export const getCollection = async (): Promise<CollectionData[]> => {
 			nft.contract = new ethers.Contract(nft.address, contractABI, chainData.provider);
 		}
 
-		console.log(chainData)
-
 		const ids = (await nft.contract.getOwnedIDs(account)).map((id: BigNumber) => id.toString());
 
 		for (const ownedID of ids) {
