@@ -35,7 +35,7 @@ const networks: ChainData[] = [
 	},
 	{
 		chainId: 80001,
-		RPC_URL: 'https://matic-mumbai.chainstacklabs.com',
+		RPC_URL: 'https://rpc-mumbai.maticvigil.com',
 		explorer: 'https://mumbai.polygonscan.com/tx/',
 		provider: undefined
 	},
@@ -69,7 +69,7 @@ export const getCollection = async (): Promise<CollectionData[]> => {
 
 	for (const nft of nfts) {
 		const chainData = networks.find((data) => data.chainId == nft.chainId);
-		if (!chainData) return _collection;
+		if (!chainData) continue;
 
 		if (!chainData.provider) {
 			chainData.provider = new ethers.providers.StaticJsonRpcProvider(chainData.RPC_URL);
